@@ -1,0 +1,169 @@
+$theme-color-primary: #0ead69;
+$theme-color-secondary: #0b7e4d;
+$theme-color-accent: #7bd2ad;
+$theme-color-light: #f0fdf4;
+$theme-color-muted: #6b7280;
+$theme-font-family: Candara, sans-serif;
+
+body {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  overflow: hidden;
+  margin: calc(1189px / -2) 0 0 calc(841px / -2);
+  width: 841px;
+  height: 1189px;
+  background-color: gray;
+}
+
+#app {
+  clip: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+  aspect-ratio: 841 / 1189;
+  background: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  gap: 10px;
+  font-family: $theme-font-family;
+  font-size: 15px;
+}
+
+header {
+  width: 100%;
+
+  a {
+    color: white;
+  }
+}
+
+section {
+  border-radius: 10px;
+  padding: 10px;
+  position: relative;
+
+  h2 {
+    color: $theme-color-primary;
+    margin-block-start: 0.5em;
+  }
+
+  ul {
+    padding-inline-start: 0;
+    margin-block-start: 0.25em;
+    list-style-type: none;
+
+    li > ul {
+      padding-inline-start: 1em;
+      margin-block-start: 0.25em;
+      list-style-type: none;
+    }
+  }
+
+  a {
+    color: $theme-color-secondary;
+  }
+}
+
+.bg-light {
+  background-color: $theme-color-light;
+}
+
+.bg-dark {
+  background-color: $theme-color-primary;
+  color: white;
+}
+
+.bg-accent {
+  background-color: $theme-color-accent;
+}
+
+a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.title {
+  font-size: 35px;
+}
+
+.authors {
+  font-size: 18px;
+}
+
+.affiliations {
+  font-size: 12px;
+  font-style: italic;
+}
+
+.text-secondary {
+  color: $theme-color-secondary;
+}
+
+.logo {
+  grid-row: 12;
+  margin: auto;
+
+  img {
+    margin-top: -10px;
+  }
+}
+
+.qr-code {
+  grid-row: 12;
+  margin: auto;
+  text-align: center;
+
+  p {
+    margin: 0 0 10px;
+  }
+
+  img {
+    height: 55px;
+    margin-top: -10px;
+  }
+}
+
+small {
+  font-size: 12px;
+  color: $theme-color-muted;
+}
+
+.li-icon {
+  margin-bottom: -1px;
+  color: $theme-color-primary;
+}
+
+@media print {
+  body {
+    background: white;
+    transform: none !important;
+  }
+
+  #poster-wrapper {
+    transform: none !important;
+  }
+
+  #app {
+    box-shadow: none;
+  }
+}
+
+@page {
+  size: 841px 1189px; /* A0 dimensions in millimeters */
+  margin: 0;
+}
+
+#app {
+  -webkit-print-color-adjust: exact;
+  text-rendering: geometricprecision;
+}
