@@ -22,104 +22,118 @@
         </header>
 
         <!-- Problem / Motivation -->
-        <section class="bg-light" style="grid-column: 1/7; grid-row: 3/6; margin-left: 30px;" rel="schema:hasPart" resource="#problem">
+        <section class="bg-light" style="grid-column: 1/7; grid-row: 3/5; margin-left: 30px;" rel="schema:hasPart" resource="#problem">
             <h2 property="schema:name">Problem</h2>
             <ul>
                 <li>
                     <i class="fa-solid fa-circle-exclamation fa-2xs li-icon"></i> Multiple clients need to <strong>read and write the same RDF graph concurrently</strong> — even while offline.
                 </li>
-                <li style="margin-top: 1em;">
+                <li style="margin-top: 0.8em;">
                     <i class="fa-solid fa-triangle-exclamation fa-2xs li-icon"></i> Concurrent edits cause <strong>write conflicts</strong> that traditional stores cannot resolve without coordination.
                 </li>
-                <li style="margin-top: 1em;">
+                <li style="margin-top: 0.8em;">
                     <i class="fa-solid fa-question-circle fa-2xs li-icon"></i> Existing approaches require <strong>always-online coordination</strong>, blocking offline-first and decentralized use cases.
                 </li>
             </ul>
         </section>
 
         <!-- Approach -->
-        <section class="bg-accent" style="grid-column: 7/13; grid-row: 3/6; margin-right: 30px;" rel="schema:hasPart" resource="#approach">
+        <section class="bg-accent" style="grid-column: 7/13; grid-row: 3/5; margin-right: 30px;" rel="schema:hasPart" resource="#approach">
             <h2 property="schema:name" style="color: white;">Approach: OR-Set CRDT</h2>
             <ul>
                 <li>
                     <i class="fa-solid fa-tags fa-2xs li-icon" style="color: white;"></i> Every added triple is tagged with a <strong>unique UUID identifier</strong>.
                 </li>
-                <li style="margin-top: 1em;">
+                <li style="margin-top: 0.8em;">
                     <i class="fa-solid fa-trash-can fa-2xs li-icon" style="color: white;"></i> Removing a triple records the UUIDs of all <strong>observed add-tags</strong> at removal time.
                 </li>
-                <li style="margin-top: 1em;">
+                <li style="margin-top: 0.8em;">
                     <i class="fa-solid fa-trophy fa-2xs li-icon" style="color: white;"></i> <strong>Add-wins semantics</strong>: concurrent add and remove of the same triple always keeps the triple.
                 </li>
             </ul>
         </section>
 
-        <!-- Data Model -->
-        <section class="bg-light" style="grid-column: 1/7; grid-row: 6/9; margin-left: 30px;" rel="schema:hasPart" resource="#data-model">
+        <!-- Data Model with figure -->
+        <section class="bg-light" style="grid-column: 1/13; grid-row: 5/8; margin-left: 30px; margin-right: 30px;" rel="schema:hasPart" resource="#data-model">
             <h2 property="schema:name">Self-Contained Data Model</h2>
-            <ul>
-                <li>
-                    <i class="fa-solid fa-database fa-2xs li-icon"></i> CRDT metadata stored inline as regular RDF quads using <strong>RDF 1.2 triple terms</strong> (quoted triples).
-                </li>
-                <li style="margin-top: 0.8em;">
-                    <i class="fa-solid fa-cube fa-2xs li-icon"></i> Each data triple has a <strong>blank-node tagger</strong> linked via <code>crdt:tagging</code> to a triple term.
-                </li>
-                <li style="margin-top: 0.8em;">
-                    <i class="fa-solid fa-eye fa-2xs li-icon"></i> A triple is <strong>visible</strong> if at least one of its add-tags is <strong>not</strong> covered by any remove-tag.
-                </li>
-                <li style="margin-top: 0.8em;">
-                    <i class="fa-solid fa-file-code fa-2xs li-icon"></i> Entire state serialized as <strong>N-Quads</strong> — self-contained, no external metadata needed.
-                </li>
-            </ul>
+            <div style="display: flex; gap: 15px; align-items: flex-start;">
+                <div style="flex: 1;">
+                    <ul>
+                        <li>
+                            <i class="fa-solid fa-database fa-2xs li-icon"></i> CRDT metadata stored inline as regular RDF quads using <strong>RDF 1.2 triple terms</strong> (quoted triples).
+                        </li>
+                        <li style="margin-top: 0.6em;">
+                            <i class="fa-solid fa-cube fa-2xs li-icon"></i> Each data triple has a <strong>blank-node tagger</strong> linked via <code>crdt:tagging</code> to a triple term.
+                        </li>
+                        <li style="margin-top: 0.6em;">
+                            <i class="fa-solid fa-eye fa-2xs li-icon"></i> A triple is <strong>visible</strong> if at least one of its add-tags is <strong>not</strong> covered by any remove-tag.
+                        </li>
+                        <li style="margin-top: 0.6em;">
+                            <i class="fa-solid fa-file-code fa-2xs li-icon"></i> Entire state serialized as <strong>N-Quads</strong> — self-contained, no external metadata needed.
+                        </li>
+                    </ul>
+                </div>
+                <div style="flex: 1; display: flex; align-items: center; justify-content: center;">
+                    <img src="/img/fig-orset-model.svg" alt="OR-Set data model: triple terms, taggers, add/delete tags, and visibility rule" style="width: 100%; max-height: 180px;"/>
+                </div>
+            </div>
         </section>
 
-        <!-- Web Sync -->
-        <section class="bg-light" style="grid-column: 7/13; grid-row: 6/9; margin-right: 30px;" rel="schema:hasPart" resource="#web-sync">
+        <!-- Web Sync with figure -->
+        <section class="bg-light" style="grid-column: 1/13; grid-row: 8/10; margin-left: 30px; margin-right: 30px;" rel="schema:hasPart" resource="#web-sync">
             <h2 property="schema:name">Web Synchronization</h2>
-            <ul>
-                <li>
-                    <i class="fa-solid fa-globe fa-2xs li-icon"></i> <strong>WebSyncedStore</strong> extends the CRDT store with automatic periodic <strong>HTTP pull/push</strong>.
-                </li>
-                <li style="margin-top: 0.8em;">
-                    <i class="fa-solid fa-shield-halved fa-2xs li-icon"></i> Uses <strong>ETags</strong> and conditional <code>PUT</code> (<code>If-Match</code>) to detect mid-air collisions.
-                </li>
-                <li style="margin-top: 0.8em;">
-                    <i class="fa-solid fa-plug fa-2xs li-icon"></i> <strong>RDFjs-compliant</strong> — works as source and destination for Comunica SPARQL queries.
-                </li>
-                <li style="margin-top: 0.8em;">
-                    <i class="fa-solid fa-server fa-2xs li-icon"></i> Compatible with any <strong>Solid server</strong> or ETag-aware HTTP storage.
-                </li>
-            </ul>
+            <div style="display: flex; gap: 15px; align-items: flex-start;">
+                <div style="flex: 1; display: flex; align-items: center; justify-content: center;">
+                    <img src="/img/fig-web-sync.svg" alt="Web sync architecture: two clients synchronizing via an HTTP server with CRDT merge" style="width: 100%; max-height: 150px;"/>
+                </div>
+                <div style="flex: 1;">
+                    <ul>
+                        <li>
+                            <i class="fa-solid fa-globe fa-2xs li-icon"></i> <strong>WebSyncedStore</strong> extends the CRDT store with automatic periodic <strong>HTTP pull/push</strong>.
+                        </li>
+                        <li style="margin-top: 0.6em;">
+                            <i class="fa-solid fa-shield-halved fa-2xs li-icon"></i> Uses <strong>ETags</strong> and conditional <code>PUT</code> (<code>If-Match</code>) to detect mid-air collisions.
+                        </li>
+                        <li style="margin-top: 0.6em;">
+                            <i class="fa-solid fa-plug fa-2xs li-icon"></i> <strong>RDFjs-compliant</strong> — works as source and destination for Comunica SPARQL queries.
+                        </li>
+                        <li style="margin-top: 0.6em;">
+                            <i class="fa-solid fa-server fa-2xs li-icon"></i> Compatible with any <strong>Solid server</strong> or ETag-aware HTTP storage.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Add-wins scenario -->
+        <section class="bg-accent" style="grid-column: 1/13; grid-row: 10/11; margin-left: 30px; margin-right: 30px;" rel="schema:hasPart" resource="#add-wins">
+            <h2 property="schema:name" style="color: white; margin-block-end: 0.2em;">Add-Wins Guarantee</h2>
+            <div style="display: flex; align-items: center; justify-content: center;">
+                <img src="/img/fig-add-wins.svg" alt="Add-wins scenario: concurrent add and remove results in the triple being kept" style="width: 80%; max-height: 120px; background: white; border-radius: 6px; padding: 4px;"/>
+            </div>
         </section>
 
         <!-- Key Features -->
-        <section class="bg-light" style="grid-column: 1/13; grid-row: 9/11; margin-left: 30px; margin-right: 30px;" rel="schema:hasPart" resource="#features">
-            <h2 property="schema:name">Key Features</h2>
-            <div style="display: flex; gap: 20px;">
-                <div style="flex: 1;">
-                    <ul>
-                        <li><i class="fa-solid fa-arrows-rotate fa-2xs li-icon"></i> <strong>State-based merge</strong>: commutative, associative, and idempotent — guarantees eventual consistency</li>
-                        <li style="margin-top: 0.5em;"><i class="fa-solid fa-wifi fa-2xs li-icon"></i> <strong>Offline-first</strong>: clients work independently and reconcile later without conflicts</li>
-                        <li style="margin-top: 0.5em;"><i class="fa-solid fa-clock-rotate-left fa-2xs li-icon"></i> <strong>Tombstone expiration</strong>: configurable duration to prevent unbounded metadata growth</li>
-                    </ul>
-                </div>
-                <div style="flex: 1;">
-                    <ul>
-                        <li><i class="fa-solid fa-code fa-2xs li-icon"></i> <strong>SPARQL via Comunica</strong>: full INSERT / SELECT / DELETE support through standard query engine</li>
-                        <li style="margin-top: 0.5em;"><i class="fa-solid fa-box-open fa-2xs li-icon"></i> <strong>npm package</strong>: <code>orset-rdf-store</code> — ready to use in TypeScript / JavaScript applications</li>
-                        <li style="margin-top: 0.5em;"><i class="fa-solid fa-scale-balanced fa-2xs li-icon"></i> <strong>MIT licensed</strong> open-source proof-of-concept implementation</li>
-                    </ul>
-                </div>
-            </div>
+        <section class="bg-light" style="grid-column: 1/7; grid-row: 11/12; margin-left: 30px;" rel="schema:hasPart" resource="#features">
+            <h2 property="schema:name" style="margin-block-end: 0.2em;">Key Features</h2>
+            <ul>
+                <li><i class="fa-solid fa-arrows-rotate fa-2xs li-icon"></i> <strong>State-based merge</strong>: commutative, associative, idempotent</li>
+                <li style="margin-top: 0.3em;"><i class="fa-solid fa-wifi fa-2xs li-icon"></i> <strong>Offline-first</strong>: reconcile later without conflicts</li>
+                <li style="margin-top: 0.3em;"><i class="fa-solid fa-clock-rotate-left fa-2xs li-icon"></i> <strong>Tombstone expiration</strong>: prevent unbounded growth</li>
+                <li style="margin-top: 0.3em;"><i class="fa-solid fa-code fa-2xs li-icon"></i> <strong>SPARQL via Comunica</strong>: INSERT / SELECT / DELETE</li>
+                <li style="margin-top: 0.3em;"><i class="fa-solid fa-box-open fa-2xs li-icon"></i> <strong>npm</strong>: <code>orset-rdf-store</code></li>
+            </ul>
         </section>
 
         <!-- Future Work -->
-        <section class="bg-accent" style="grid-column: 1/13; grid-row: 11/12; margin-left: 30px; margin-right: 30px;" rel="schema:hasPart" resource="#future">
-            <h2 property="schema:name" style="color: white; margin-block-end: 0.3em;">Future Work</h2>
-            <div style="display: flex; gap: 30px;">
-                <span><i class="fa-solid fa-hard-drive fa-2xs" style="color: white;"></i> <strong>Persistent storage</strong> — move beyond in-memory to durable backends</span>
-                <span><i class="fa-solid fa-lock fa-2xs" style="color: white;"></i> <strong>Access control</strong> — integrate authentication and authorization</span>
-                <span><i class="fa-solid fa-gauge-high fa-2xs" style="color: white;"></i> <strong>Performance evaluation</strong> — benchmarks on large-scale RDF datasets</span>
-            </div>
+        <section class="bg-light" style="grid-column: 7/13; grid-row: 11/12; margin-right: 30px;" rel="schema:hasPart" resource="#future">
+            <h2 property="schema:name" style="margin-block-end: 0.2em;">Future Work</h2>
+            <ul>
+                <li><i class="fa-solid fa-hard-drive fa-2xs li-icon"></i> <strong>Persistent storage</strong> — durable backends beyond in-memory</li>
+                <li style="margin-top: 0.3em;"><i class="fa-solid fa-lock fa-2xs li-icon"></i> <strong>Access control</strong> — authentication and authorization</li>
+                <li style="margin-top: 0.3em;"><i class="fa-solid fa-gauge-high fa-2xs li-icon"></i> <strong>Performance evaluation</strong> — large-scale benchmarks</li>
+                <li style="margin-top: 0.3em;"><i class="fa-solid fa-scale-balanced fa-2xs li-icon"></i> <strong>MIT licensed</strong> open-source proof-of-concept</li>
+            </ul>
         </section>
 
         <div class="logo" style="grid-column: 1/3;">

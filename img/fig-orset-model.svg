@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 200">
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#1e64c8"/>
+    </marker>
+    <marker id="arrow-gray" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#6b7280"/>
+    </marker>
+  </defs>
+
+  <!-- Data triple box -->
+  <rect x="10" y="15" width="160" height="36" rx="6" fill="#eef4fc" stroke="#1e64c8" stroke-width="1.5"/>
+  <text x="90" y="28" text-anchor="middle" font-family="Candara, sans-serif" font-size="9" fill="#1e64c8" font-weight="bold">Data Triple</text>
+  <text x="90" y="42" text-anchor="middle" font-family="monospace" font-size="8" fill="#333">&lt;Alice&gt; :knows &lt;Bob&gt;</text>
+
+  <!-- Tagger blank node -->
+  <rect x="210" y="15" width="160" height="36" rx="6" fill="#fff3e0" stroke="#e26c22" stroke-width="1.5"/>
+  <text x="290" y="28" text-anchor="middle" font-family="Candara, sans-serif" font-size="9" fill="#e26c22" font-weight="bold">Tagger</text>
+  <text x="290" y="42" text-anchor="middle" font-family="monospace" font-size="8" fill="#333">_:t1  crdt:tagging  &lt;&lt;(…)&gt;&gt;</text>
+
+  <!-- Arrow from tagger to triple -->
+  <line x1="210" y1="33" x2="175" y2="33" stroke="#6b7280" stroke-width="1.2" marker-end="url(#arrow-gray)"/>
+
+  <!-- Add tags -->
+  <rect x="210" y="70" width="160" height="50" rx="6" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/>
+  <text x="290" y="84" text-anchor="middle" font-family="Candara, sans-serif" font-size="9" fill="#2e7d32" font-weight="bold">Add Tags (crdt:add)</text>
+  <text x="290" y="98" text-anchor="middle" font-family="monospace" font-size="7.5" fill="#333">uuid-a1 ✓</text>
+  <text x="290" y="111" text-anchor="middle" font-family="monospace" font-size="7.5" fill="#333">uuid-a2 ✓</text>
+
+  <!-- Arrow from tagger to add tags -->
+  <line x1="290" y1="51" x2="290" y2="67" stroke="#2e7d32" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+  <!-- Delete tags -->
+  <rect x="210" y="138" width="160" height="50" rx="6" fill="#ffebee" stroke="#c62828" stroke-width="1.5"/>
+  <text x="290" y="152" text-anchor="middle" font-family="Candara, sans-serif" font-size="9" fill="#c62828" font-weight="bold">Delete Tags (crdt:delete)</text>
+  <text x="290" y="166" text-anchor="middle" font-family="monospace" font-size="7.5" fill="#333">uuid-a1 ✗</text>
+  <text x="290" y="179" text-anchor="middle" font-family="monospace" font-size="7.5" fill="#888" text-decoration="line-through">covers uuid-a1</text>
+
+  <!-- Arrow from tagger to delete tags -->
+  <line x1="290" y1="120" x2="290" y2="135" stroke="#c62828" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+  <!-- Visibility rule -->
+  <rect x="10" y="70" width="180" height="118" rx="8" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="1.5"/>
+  <text x="100" y="90" text-anchor="middle" font-family="Candara, sans-serif" font-size="10" fill="#7b1fa2" font-weight="bold">Visibility Rule</text>
+  <text x="100" y="108" text-anchor="middle" font-family="Candara, sans-serif" font-size="8.5" fill="#333">A triple is visible if</text>
+  <text x="100" y="122" text-anchor="middle" font-family="Candara, sans-serif" font-size="8.5" fill="#333">at least one add-tag is</text>
+  <text x="100" y="138" text-anchor="middle" font-family="Candara, sans-serif" font-size="10" fill="#2e7d32" font-weight="bold">NOT covered</text>
+  <text x="100" y="152" text-anchor="middle" font-family="Candara, sans-serif" font-size="8.5" fill="#333">by any delete-tag.</text>
+
+  <!-- Result -->
+  <text x="100" y="172" text-anchor="middle" font-family="Candara, sans-serif" font-size="9" fill="#1e64c8" font-weight="bold">→ uuid-a2 uncovered</text>
+  <text x="100" y="183" text-anchor="middle" font-family="Candara, sans-serif" font-size="9" fill="#2e7d32" font-weight="bold">→ Triple is VISIBLE ✓</text>
+</svg>
