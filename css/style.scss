@@ -2,7 +2,7 @@ $theme-color-primary: #1e64c8;
 $theme-color-secondary: #164a96;
 $theme-color-accent: #e26c22;
 $theme-color-accent-light: #fff3e0;
-$theme-color-light: #eef4fc;
+$theme-color-light: #f5f7fa;
 $theme-color-muted: #6b7280;
 $theme-color-dark: #1a1a2e;
 $theme-font-family: Candara, sans-serif;
@@ -42,10 +42,16 @@ body {
 /* ─── Header ─── */
 header {
   width: 100%;
-  background: linear-gradient(135deg, $theme-color-primary 0%, #143e7a 100%);
+  background: linear-gradient(135deg, #0d3b7a 0%, $theme-color-primary 60%, #2874d8 100%);
+  position: relative;
 
   a {
     color: white;
+  }
+
+  .header-inner {
+    position: relative;
+    z-index: 1;
   }
 
   .title {
@@ -54,9 +60,11 @@ header {
     margin-block-end: 0.15em;
     line-height: 1.25;
     letter-spacing: -0.3px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 
     .highlight {
       color: $theme-color-accent;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
     }
   }
 
@@ -78,7 +86,7 @@ header {
 
 /* ─── Sections ─── */
 section {
-  border-radius: 12px;
+  border-radius: 10px;
   padding: 10px 14px;
   position: relative;
   overflow: hidden;
@@ -91,10 +99,12 @@ section {
     display: flex;
     align-items: center;
     gap: 6px;
+    font-weight: 700;
+    letter-spacing: -0.2px;
 
     .section-icon {
       font-size: 15px;
-      opacity: 0.8;
+      opacity: 0.85;
     }
   }
 
@@ -120,25 +130,54 @@ section {
     background: rgba(0, 0, 0, 0.06);
     padding: 1px 4px;
     border-radius: 3px;
+    font-weight: 600;
+  }
+}
+
+/* Section with colored left border (white bg, left accent) */
+.section-bordered {
+  background: white;
+  border: 1px solid #e0e4ea;
+  border-left: 5px solid $theme-color-primary;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.section-bordered-accent {
+  background: white;
+  border: 1px solid #e0e4ea;
+  border-left: 5px solid $theme-color-accent;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* Filled dark section (for contrast) */
+.section-filled-dark {
+  background: $theme-color-primary;
+  color: white;
+  box-shadow: 0 3px 12px rgba(30, 100, 200, 0.25);
+
+  h2 {
+    color: white !important;
+  }
+}
+
+/* Filled accent section */
+.section-filled-accent {
+  background: linear-gradient(135deg, $theme-color-accent, #c45a18);
+  color: white;
+  box-shadow: 0 3px 12px rgba(226, 108, 34, 0.25);
+
+  h2 {
+    color: white !important;
+  }
+
+  code {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
   }
 }
 
 .bg-light {
   background-color: $theme-color-light;
-}
-
-.bg-dark {
-  background-color: $theme-color-primary;
-  color: white;
-}
-
-.bg-accent {
-  background-color: $theme-color-primary;
-  color: white;
-
-  h2 {
-    color: white !important;
-  }
 }
 
 /* ─── Banner strips ─── */
@@ -147,21 +186,24 @@ section {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 8px 20px;
-  font-size: 16px;
+  padding: 10px 20px;
+  font-size: 15px;
   font-weight: 700;
   line-height: 1.3;
   border-radius: 10px;
 }
 
 .banner-accent {
-  background: linear-gradient(90deg, $theme-color-accent, #c45a18);
+  background: linear-gradient(90deg, $theme-color-accent, #d45e16);
   color: white;
+  box-shadow: 0 3px 12px rgba(226, 108, 34, 0.3);
 }
 
-.banner-primary {
-  background: linear-gradient(90deg, $theme-color-primary, #3278dc);
+.banner-takeaway {
+  background: linear-gradient(90deg, #0d3b7a, $theme-color-primary);
   color: white;
+  box-shadow: 0 3px 12px rgba(30, 100, 200, 0.3);
+  font-size: 14px;
 }
 
 /* ─── Links ─── */
@@ -174,40 +216,46 @@ a {
 }
 
 /* ─── Footer ─── */
-.logo {
+.footer-bar {
+  grid-column: 1 / 13;
   grid-row: 12;
-  margin: auto;
-
-  img {
-    margin-top: -10px;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: $theme-color-light;
+  border-top: 3px solid $theme-color-primary;
+  padding: 6px 30px;
+  margin: 0;
 }
 
-.qr-code {
-  grid-row: 12;
-  margin: auto;
-  text-align: center;
-
-  p {
-    margin: 0 0 4px;
-  }
-
-  img {
-    height: 50px;
-    margin-top: -5px;
-  }
-}
-
-.footer-contact {
-  grid-row: 12;
-  margin: auto;
-  font-size: 9px;
+.footer-emails {
+  font-size: 10px;
   color: $theme-color-muted;
-  line-height: 1.5;
+  line-height: 1.6;
 
   a {
     color: $theme-color-primary;
     font-weight: 600;
+  }
+}
+
+.footer-logos {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer-qr {
+  text-align: center;
+
+  p {
+    margin: 0 0 2px;
+    font-size: 9px;
+    color: $theme-color-muted;
+  }
+
+  img {
+    height: 42px;
   }
 }
 
@@ -220,13 +268,36 @@ small {
 .li-icon {
   margin-bottom: -1px;
   color: $theme-color-accent;
-  margin-right: 2px;
+  margin-right: 3px;
 }
 
 .li-icon-white {
   margin-bottom: -1px;
-  color: rgba(255, 255, 255, 0.85);
-  margin-right: 2px;
+  color: rgba(255, 255, 255, 0.9);
+  margin-right: 3px;
+}
+
+/* ─── Orange dash markers (like SGF poster) ─── */
+.li-dash {
+  display: inline-block;
+  width: 14px;
+  height: 3px;
+  background: $theme-color-accent;
+  margin-right: 6px;
+  margin-bottom: 3px;
+  border-radius: 2px;
+  vertical-align: middle;
+}
+
+.li-dash-white {
+  display: inline-block;
+  width: 14px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.7);
+  margin-right: 6px;
+  margin-bottom: 3px;
+  border-radius: 2px;
+  vertical-align: middle;
 }
 
 /* ─── Feature cards (icon + label grid) ─── */
@@ -245,7 +316,8 @@ small {
   background: white;
   border-radius: 10px;
   padding: 10px 6px 8px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0e4ea;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 
   .feature-icon {
     font-size: 22px;
@@ -265,20 +337,16 @@ small {
   }
 }
 
-.feature-card-dark {
-  background: rgba(255, 255, 255, 0.15);
-  box-shadow: none;
+.feature-card-accent {
+  background: $theme-color-accent-light;
+  border: 1px solid rgba(226, 108, 34, 0.2);
 
   .feature-icon {
-    color: white;
+    color: $theme-color-accent;
   }
 
-  .feature-label {
-    color: rgba(255, 255, 255, 0.95);
-
-    strong {
-      color: $theme-color-accent;
-    }
+  .feature-label strong {
+    color: $theme-color-accent;
   }
 }
 
