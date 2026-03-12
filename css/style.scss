@@ -25,15 +25,16 @@ body {
   padding: 0;
   overflow: hidden;
   box-sizing: border-box;
-  aspect-ratio: 841 / 1189;
+  width: 841px;
+  height: 1189px;
   background: white;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(12, 1fr);
+  grid-template-rows: auto repeat(10, 1fr) auto;
   gap: 10px;
   font-family: $theme-font-family;
-  font-size: 15px;
+  font-size: 14px;
 }
 
 header {
@@ -46,17 +47,21 @@ header {
 
 section {
   border-radius: 10px;
-  padding: 10px;
+  padding: 10px 12px;
   position: relative;
+  overflow: hidden;
 
   h2 {
     color: $theme-color-primary;
-    margin-block-start: 0.5em;
+    margin-block-start: 0.3em;
+    margin-block-end: 0.3em;
+    font-size: 16px;
   }
 
   ul {
     padding-inline-start: 0;
-    margin-block-start: 0.25em;
+    margin-block-start: 0.15em;
+    margin-block-end: 0.15em;
     list-style-type: none;
 
     li > ul {
@@ -68,6 +73,13 @@ section {
 
   a {
     color: $theme-color-secondary;
+  }
+
+  code {
+    font-size: 0.85em;
+    background: rgba(0, 0, 0, 0.06);
+    padding: 1px 3px;
+    border-radius: 3px;
   }
 }
 
@@ -93,16 +105,22 @@ a {
 }
 
 .title {
-  font-size: 35px;
+  font-size: 30px;
+  margin-block-start: 0.2em;
+  margin-block-end: 0.2em;
 }
 
 .authors {
-  font-size: 18px;
+  font-size: 16px;
+  margin-block-start: 0.2em;
+  margin-block-end: 0.2em;
 }
 
 .affiliations {
-  font-size: 12px;
+  font-size: 11px;
   font-style: italic;
+  margin-block-start: 0.2em;
+  margin-block-end: 0;
 }
 
 .text-secondary {
