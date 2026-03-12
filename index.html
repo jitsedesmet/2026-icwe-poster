@@ -10,9 +10,13 @@
       typeof="schema:Poster">
 <div id="poster-wrapper">
     <div id="app">
-        <header class="bg-dark" style="grid-column: 1/13; grid-row: 1/2;">
-            <div style="margin: 20px 30px;">
-                <h1 property="schema:name schema:headline" class="title">A State-Based Add-Wins CRDT for RDF Datastores</h1>
+        <!-- ═══════ HEADER ═══════ -->
+        <header style="grid-column: 1/13; grid-row: 1/2;">
+            <div style="margin: 16px 30px 12px;">
+                <h1 property="schema:name schema:headline" class="title">
+                    A State-Based <span class="highlight">Add-Wins CRDT</span><br/>
+                    for <span class="highlight">RDF</span> Datastores
+                </h1>
                 <h2 class="authors">
                     <a property="schema:author" href="https://jitsedesmet.be/" resource="https://jitsedesmet.be/profile#me">Jitse De Smet</a>,
                     <a property="schema:author" href="https://www.rubensworks.net/" resource="https://www.rubensworks.net/#me">Ruben Taelman</a>
@@ -21,164 +25,187 @@
             </div>
         </header>
 
-        <!-- Problem / Motivation -->
+        <!-- ═══════ PROBLEM — visual icon cards ═══════ -->
         <section class="bg-light" style="grid-column: 1/7; grid-row: 2/5; margin-left: 30px;" rel="schema:hasPart" resource="#problem">
-            <h2 property="schema:name">Problem</h2>
-            <ul>
-                <li>
-                    <i class="fa-solid fa-robot fa-2xs li-icon"></i> Multiple agents <strong>concurrently write</strong> to shared RDF knowledge graphs.
-                </li>
-                <li style="margin-top: 0.6em;">
-                    <i class="fa-solid fa-circle-nodes fa-2xs li-icon"></i> <strong>Decentralized ecosystems</strong> (Solid, IDSA, Gaia-X) — no central authority.
-                </li>
-                <li style="margin-top: 0.6em;">
-                    <i class="fa-solid fa-wifi fa-2xs li-icon"></i> <strong>Offline editing → write conflicts</strong> on reconnect.
-                </li>
-                <li style="margin-top: 0.6em;">
-                    <i class="fa-solid fa-circle-exclamation fa-2xs li-icon"></i> Existing approaches: <strong>dedicated servers</strong> (m-ld) or <strong>consistency boundary problems</strong> (binary blobs outside dataset).
-                </li>
-            </ul>
+            <h2 property="schema:name"><i class="fa-solid fa-triangle-exclamation section-icon"></i> Problem</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <i class="fa-solid fa-robot feature-icon"></i>
+                    <span class="feature-label"><strong>Concurrent writes</strong> to shared RDF graphs</span>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-circle-nodes feature-icon"></i>
+                    <span class="feature-label"><strong>Decentralized</strong> — no central authority</span>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-wifi feature-icon"></i>
+                    <span class="feature-label"><strong>Offline editing</strong> → write conflicts</span>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-circle-exclamation feature-icon"></i>
+                    <span class="feature-label">Existing: <strong>extra servers</strong> or <strong>boundary problems</strong></span>
+                </div>
+            </div>
         </section>
 
-        <!-- Approach -->
+        <!-- ═══════ APPROACH — visual icon cards ═══════ -->
         <section class="bg-accent" style="grid-column: 7/13; grid-row: 2/5; margin-right: 30px;" rel="schema:hasPart" resource="#approach">
-            <h2 property="schema:name" style="color: white;">Approach</h2>
-            <ul>
-                <li>
-                    <i class="fa-solid fa-layer-group fa-2xs li-icon" style="color: white;"></i> <strong>State-based OR-Set CRDT</strong> over <strong>RDF 1.2 triple terms</strong>.
-                </li>
-                <li style="margin-top: 0.6em;">
-                    <i class="fa-solid fa-database fa-2xs li-icon" style="color: white;"></i> All bookkeeping in a <strong>single dataset</strong> — no external blobs or servers.
-                </li>
-                <li style="margin-top: 0.6em;">
-                    <i class="fa-solid fa-trophy fa-2xs li-icon" style="color: white;"></i> <strong>Add-wins</strong>: concurrent add + remove → triple survives.
-                </li>
-                <li style="margin-top: 0.6em;">
-                    <i class="fa-solid fa-eye-slash fa-2xs li-icon" style="color: white;"></i> <strong>Transparent</strong>: agents use standard SPARQL, unaware of CRDT merge.
-                </li>
-            </ul>
-        </section>
-
-        <!-- RDF 1.2 Data Model with figure -->
-        <section class="bg-light" style="grid-column: 1/13; grid-row: 5/8; margin-left: 30px; margin-right: 30px;" rel="schema:hasPart" resource="#data-model">
-            <h2 property="schema:name">State-Based OR-Set in RDF 1.2</h2>
-            <div style="display: flex; gap: 15px; align-items: flex-start;">
-                <div style="flex: 1;">
-                    <ul>
-                        <li>
-                            <i class="fa-solid fa-tags fa-2xs li-icon"></i> Each triple carries unique <strong>add-tags</strong> (UUIDv4); removal moves tags to a <strong>tombstone set</strong>.
-                        </li>
-                        <li style="margin-top: 0.5em;">
-                            <i class="fa-solid fa-cube fa-2xs li-icon"></i> A <strong>blank node</strong> links triple term, add-tags, and tombstones via <code>crdt:tags</code>.
-                        </li>
-                        <li style="margin-top: 0.5em;">
-                            <i class="fa-solid fa-eye fa-2xs li-icon"></i> Triple is <strong>present</strong> ⟺ ≥1 add-tag not in tombstone set.
-                        </li>
-                        <li style="margin-top: 0.5em;">
-                            <i class="fa-solid fa-code-merge fa-2xs li-icon"></i> On <strong>merge</strong>: identifying nodes for the same triple are consolidated.
-                        </li>
-                    </ul>
+            <h2 property="schema:name"><i class="fa-solid fa-lightbulb section-icon"></i> Approach</h2>
+            <div class="feature-grid">
+                <div class="feature-card feature-card-dark">
+                    <i class="fa-solid fa-layer-group feature-icon"></i>
+                    <span class="feature-label"><strong>OR-Set CRDT</strong> over RDF 1.2 triple terms</span>
                 </div>
-                <div style="flex: 1; display: flex; align-items: center; justify-content: center;">
-                    <img src="/img/fig-orset-model.svg" alt="RDF 1.2 representation of a state-based OR-Set: triples with add-tags, tombstones, and presence rules" style="width: 100%; max-height: 200px;"/>
+                <div class="feature-card feature-card-dark">
+                    <i class="fa-solid fa-database feature-icon"></i>
+                    <span class="feature-label">All in <strong>one dataset</strong> — no blobs</span>
+                </div>
+                <div class="feature-card feature-card-dark">
+                    <i class="fa-solid fa-trophy feature-icon"></i>
+                    <span class="feature-label"><strong>Add-wins</strong>: add + remove → keeps triple</span>
+                </div>
+                <div class="feature-card feature-card-dark">
+                    <i class="fa-solid fa-eye-slash feature-icon"></i>
+                    <span class="feature-label"><strong>Transparent</strong> to SPARQL agents</span>
                 </div>
             </div>
         </section>
 
-        <!-- Web Sync with figure -->
-        <section class="bg-light" style="grid-column: 1/13; grid-row: 8/10; margin-left: 30px; margin-right: 30px;" rel="schema:hasPart" resource="#web-sync">
-            <h2 property="schema:name">Web Synchronization</h2>
-            <div style="display: flex; gap: 15px; align-items: flex-start;">
-                <div style="flex: 1; display: flex; align-items: center; justify-content: center;">
-                    <img src="/img/fig-web-sync.svg" alt="State-based sync: agents exchange full dataset state via HTTP GET/PUT with ETags" style="width: 100%; max-height: 160px;"/>
-                </div>
-                <div style="flex: 1;">
-                    <ul>
-                        <li>
-                            <i class="fa-solid fa-globe fa-2xs li-icon"></i> State-based merge aligns with <strong>REST semantics</strong> — exchange full state, not operations.
-                        </li>
-                        <li style="margin-top: 0.5em;">
-                            <i class="fa-solid fa-shield-halved fa-2xs li-icon"></i> <strong>ETag + conditional PUT</strong> prevents mid-air collisions — no extra infrastructure.
-                        </li>
-                        <li style="margin-top: 0.5em;">
-                            <i class="fa-solid fa-plug fa-2xs li-icon"></i> Implements <strong>RDFjs Store interface</strong> → plugs into Comunica for SPARQL.
-                        </li>
-                        <li style="margin-top: 0.5em;">
-                            <i class="fa-solid fa-users fa-2xs li-icon"></i> <strong>CRDT-aware and unaware clients</strong> coexist on the same data.
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- NTP Tombstone Optimization -->
-        <section class="bg-accent" style="grid-column: 1/7; grid-row: 10/12; margin-left: 30px;" rel="schema:hasPart" resource="#tombstone">
-            <h2 property="schema:name" style="color: white;">NTP Tombstone Optimization</h2>
-            <ul>
-                <li>
-                    <i class="fa-solid fa-clock fa-2xs li-icon" style="color: white;"></i> Without GC, tombstones <strong>accumulate indefinitely</strong>.
-                </li>
-                <li style="margin-top: 0.4em;">
-                    <i class="fa-solid fa-satellite-dish fa-2xs li-icon" style="color: white;"></i> NTP bounds: max <strong>2000s drift</strong> between any two clients.
-                </li>
-                <li style="margin-top: 0.4em;">
-                    <i class="fa-solid fa-stamp fa-2xs li-icon" style="color: white;"></i> <code>crdt:stamp-uuid</code> tags enable <strong>time-based pruning</strong>.
-                </li>
-                <li style="margin-top: 0.4em;">
-                    <i class="fa-solid fa-broom fa-2xs li-icon" style="color: white;"></i> Tag universally seen after <strong>d + 4000s</strong> → safe to prune.
-                </li>
-                <li style="margin-top: 0.4em;">
-                    <i class="fa-solid fa-circle-check fa-2xs li-icon" style="color: white;"></i> Works in <strong>open ecosystems</strong> — no known replica set required.
-                </li>
-            </ul>
-        </section>
-
-        <!-- Conclusion & Future Work -->
-        <section class="bg-light" style="grid-column: 7/13; grid-row: 10/12; margin-right: 30px;" rel="schema:hasPart" resource="#conclusion">
-            <h2 property="schema:name">Conclusion &amp; Future Work</h2>
-            <ul>
-                <li>
-                    <i class="fa-solid fa-check-double fa-2xs li-icon"></i> Add-wins set CRDT modelled <strong>entirely in RDF 1.2</strong>.
-                </li>
-                <li style="margin-top: 0.4em;">
-                    <i class="fa-solid fa-puzzle-piece fa-2xs li-icon"></i> <strong>No consistency boundary</strong> — bookkeeping within the dataset.
-                </li>
-                <li style="margin-top: 0.4em;">
-                    <i class="fa-solid fa-wand-magic-sparkles fa-2xs li-icon"></i> <strong>Transparent</strong> conflict resolution for agents and SPARQL clients.
-                </li>
-                <li style="margin-top: 0.4em;">
-                    <i class="fa-solid fa-box-open fa-2xs li-icon"></i> PoC: <code>orset-rdf-store</code> on npm.
-                </li>
-                <li style="margin-top: 0.4em;">
-                    <i class="fa-solid fa-flask fa-2xs li-icon"></i> <strong>Future work</strong>: <strong>constraint-aware merge</strong> — valid states can merge into constraint-violating states.
-                </li>
-            </ul>
-        </section>
-
-        <div class="logo" style="grid-column: 1/3;">
-            <a href="https://www.fwo.be/en/" target="_blank">
-                <img src="/img/logos/logo-fwo-white.svg" alt="FWO logo" style="height: 40px; filter: brightness(0);"/>
-            </a>
+        <!-- ═══════ BANNER: Key insight ═══════ -->
+        <div class="banner banner-accent" style="grid-column: 1/13; grid-row: 5/6; margin: 0 30px;">
+            <i class="fa-solid fa-quote-left" style="margin-right: 8px; opacity: 0.6;"></i>
+            Conflict-free RDF replication using only <strong style="margin: 0 3px;">standard Web infrastructure</strong>
+            <i class="fa-solid fa-quote-right" style="margin-left: 8px; opacity: 0.6;"></i>
         </div>
-        <div class="logo" style="grid-column: 4/6;">
-            <a href="https://www.ugent.be/en" target="_blank">
-                <img src="/img/logos/logo-ugent.png" alt="UGent logo" style="height: 55px;"/>
+
+        <!-- ═══════ DATA MODEL — figure-heavy ═══════ -->
+        <section class="bg-light" style="grid-column: 1/13; grid-row: 6/9; margin-left: 30px; margin-right: 30px;" rel="schema:hasPart" resource="#data-model">
+            <h2 property="schema:name"><i class="fa-solid fa-cubes section-icon"></i> State-Based OR-Set in RDF 1.2</h2>
+            <div style="display: flex; gap: 12px; align-items: flex-start;">
+                <div style="flex: 0 0 42%;">
+                    <ul>
+                        <li>
+                            <i class="fa-solid fa-tags fa-2xs li-icon"></i> Each triple carries <strong>add-tags</strong>; removal → <strong>tombstone set</strong>
+                        </li>
+                        <li style="margin-top: 0.5em;">
+                            <i class="fa-solid fa-cube fa-2xs li-icon"></i> <strong>Blank node</strong> links triple term + tags via <code>crdt:tags</code>
+                        </li>
+                        <li style="margin-top: 0.5em;">
+                            <i class="fa-solid fa-eye fa-2xs li-icon"></i> Present ⟺ ≥1 add-tag <strong>not</strong> in tombstones
+                        </li>
+                        <li style="margin-top: 0.5em;">
+                            <i class="fa-solid fa-code-merge fa-2xs li-icon"></i> <strong>Merge</strong> consolidates nodes for same triple
+                        </li>
+                    </ul>
+                </div>
+                <div style="flex: 1; display: flex; align-items: center; justify-content: center;">
+                    <img src="/img/fig-orset-model.svg" alt="RDF 1.2 OR-Set representation" style="width: 100%; max-height: 220px;"/>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════ WEB SYNC — figure-heavy ═══════ -->
+        <section class="bg-light" style="grid-column: 1/13; grid-row: 9/11; margin-left: 30px; margin-right: 30px;" rel="schema:hasPart" resource="#web-sync">
+            <h2 property="schema:name"><i class="fa-solid fa-globe section-icon"></i> Web Synchronization</h2>
+            <div style="display: flex; gap: 12px; align-items: flex-start;">
+                <div style="flex: 1; display: flex; align-items: center; justify-content: center;">
+                    <img src="/img/fig-web-sync.svg" alt="HTTP sync with ETags" style="width: 100%; max-height: 170px;"/>
+                </div>
+                <div style="flex: 0 0 42%;">
+                    <ul>
+                        <li>
+                            <i class="fa-solid fa-arrows-rotate fa-2xs li-icon"></i> <strong>REST-aligned</strong> — exchange full state
+                        </li>
+                        <li style="margin-top: 0.5em;">
+                            <i class="fa-solid fa-shield-halved fa-2xs li-icon"></i> <strong>ETag + PUT</strong> prevents mid-air collisions
+                        </li>
+                        <li style="margin-top: 0.5em;">
+                            <i class="fa-solid fa-plug fa-2xs li-icon"></i> <strong>RDFjs Store</strong> → Comunica SPARQL
+                        </li>
+                        <li style="margin-top: 0.5em;">
+                            <i class="fa-solid fa-users fa-2xs li-icon"></i> <strong>Aware + unaware</strong> clients coexist
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════ TOMBSTONE OPT — compact ═══════ -->
+        <section class="bg-accent" style="grid-column: 1/5; grid-row: 11/12; margin-left: 30px;" rel="schema:hasPart" resource="#tombstone">
+            <h2 property="schema:name"><i class="fa-solid fa-clock section-icon"></i> NTP Tombstone GC</h2>
+            <ul>
+                <li>
+                    <i class="fa-solid fa-satellite-dish fa-2xs li-icon-white"></i> NTP drift ≤ <strong>2000s</strong>
+                </li>
+                <li style="margin-top: 0.35em;">
+                    <i class="fa-solid fa-stamp fa-2xs li-icon-white"></i> <code style="color: #ddd;">stamp-uuid</code> → time-based pruning
+                </li>
+                <li style="margin-top: 0.35em;">
+                    <i class="fa-solid fa-broom fa-2xs li-icon-white"></i> Safe prune after <strong>d + 4000s</strong>
+                </li>
+                <li style="margin-top: 0.35em;">
+                    <i class="fa-solid fa-circle-check fa-2xs li-icon-white"></i> <strong>Open ecosystems</strong> — no replica set
+                </li>
+            </ul>
+        </section>
+
+        <!-- ═══════ CONCLUSION & FUTURE ═══════ -->
+        <section class="bg-light" style="grid-column: 5/10; grid-row: 11/12;" rel="schema:hasPart" resource="#conclusion">
+            <h2 property="schema:name"><i class="fa-solid fa-flag-checkered section-icon"></i> Conclusion</h2>
+            <ul>
+                <li>
+                    <i class="fa-solid fa-check-double fa-2xs li-icon"></i> CRDT modelled <strong>entirely in RDF 1.2</strong>
+                </li>
+                <li style="margin-top: 0.35em;">
+                    <i class="fa-solid fa-puzzle-piece fa-2xs li-icon"></i> <strong>No boundary problem</strong>
+                </li>
+                <li style="margin-top: 0.35em;">
+                    <i class="fa-solid fa-box-open fa-2xs li-icon"></i> PoC: <code>orset-rdf-store</code>
+                </li>
+            </ul>
+        </section>
+
+        <section class="bg-accent" style="grid-column: 10/13; grid-row: 11/12; margin-right: 30px;" rel="schema:hasPart" resource="#future">
+            <h2 property="schema:name" style="font-size: 15px;"><i class="fa-solid fa-flask section-icon"></i> Future work</h2>
+            <ul>
+                <li>
+                    <i class="fa-solid fa-wand-magic-sparkles fa-2xs li-icon-white"></i> <strong>Constraint-aware merge</strong>
+                </li>
+                <li style="margin-top: 0.35em; font-size: 12px; opacity: 0.9;">
+                    Valid states can merge into constraint-violating states
+                </li>
+            </ul>
+        </section>
+
+        <!-- ═══════ FOOTER ═══════ -->
+        <div class="footer-contact" style="grid-column: 1/4;">
+            <a href="mailto:Jitse.DeSmet@ugent.be">Jitse.DeSmet@ugent.be</a><br/>
+            <a href="mailto:Ruben.Taelman@ugent.be">Ruben.Taelman@ugent.be</a>
+        </div>
+        <div class="qr-code" style="grid-column: 4/6;">
+            <p><small>Paper</small></p>
+            <a href="https://2026-icwe-poster.jitsedesmet.be/" target="_blank">
+                <img src="/img/logos/logo-ugent.svg" alt="Link to poster paper" style="height: 40px;"/>
             </a>
         </div>
         <div class="logo" style="grid-column: 6/8;">
+            <a href="https://www.fwo.be/en/" target="_blank">
+                <img src="/img/logos/logo-fwo-white.svg" alt="FWO logo" style="height: 35px; filter: brightness(0);"/>
+            </a>
+        </div>
+        <div class="logo" style="grid-column: 8/9;">
+            <a href="https://www.ugent.be/en" target="_blank">
+                <img src="/img/logos/logo-ugent.png" alt="UGent logo" style="height: 45px;"/>
+            </a>
+        </div>
+        <div class="logo" style="grid-column: 9/10;">
             <a href="https://www.imec-int.com/en" target="_blank">
-                <img src="/img/logos/logo-imec.png" alt="imec logo" style="height: 35px;"/>
+                <img src="/img/logos/logo-imec.png" alt="imec logo" style="height: 30px;"/>
             </a>
         </div>
-        <div class="logo" style="grid-column: 8/10;">
+        <div class="logo" style="grid-column: 10/12;">
             <a href="https://idlab.technology/" target="_blank">
-                <img src="/img/logos/logo-idlab.png" alt="IDLab logo" style="height: 40px; margin-bottom: -5px;"/>
-            </a>
-        </div>
-        <div class="qr-code" style="grid-column: 11/13;">
-            <p><small>Paper</small></p>
-            <a href="https://2026-icwe-poster.jitsedesmet.be/" target="_blank">
-                <img src="/img/logos/logo-ugent.svg" alt="Link to poster paper at 2026-icwe-poster.jitsedesmet.be" style="height: 45px;"/>
+                <img src="/img/logos/logo-idlab.png" alt="IDLab logo" style="height: 35px; margin-bottom: -5px;"/>
             </a>
         </div>
     </div>

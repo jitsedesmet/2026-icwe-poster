@@ -1,8 +1,10 @@
 $theme-color-primary: #1e64c8;
 $theme-color-secondary: #164a96;
-$theme-color-accent: #8ab4f8;
+$theme-color-accent: #e26c22;
+$theme-color-accent-light: #fff3e0;
 $theme-color-light: #eef4fc;
 $theme-color-muted: #6b7280;
+$theme-color-dark: #1a1a2e;
 $theme-font-family: Candara, sans-serif;
 
 body {
@@ -32,41 +34,79 @@ body {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: auto repeat(10, 1fr) auto;
-  gap: 10px;
+  gap: 8px 10px;
   font-family: $theme-font-family;
   font-size: 14px;
 }
 
+/* ─── Header ─── */
 header {
   width: 100%;
+  background: linear-gradient(135deg, $theme-color-primary 0%, #143e7a 100%);
 
   a {
     color: white;
   }
+
+  .title {
+    font-size: 28px;
+    margin-block-start: 0.15em;
+    margin-block-end: 0.15em;
+    line-height: 1.25;
+    letter-spacing: -0.3px;
+
+    .highlight {
+      color: $theme-color-accent;
+    }
+  }
+
+  .authors {
+    font-size: 15px;
+    margin-block-start: 0.1em;
+    margin-block-end: 0.1em;
+    font-weight: 400;
+  }
+
+  .affiliations {
+    font-size: 11px;
+    font-style: italic;
+    margin-block-start: 0.15em;
+    margin-block-end: 0;
+    opacity: 0.85;
+  }
 }
 
+/* ─── Sections ─── */
 section {
-  border-radius: 10px;
-  padding: 10px 12px;
+  border-radius: 12px;
+  padding: 10px 14px;
   position: relative;
   overflow: hidden;
 
   h2 {
     color: $theme-color-primary;
-    margin-block-start: 0.3em;
+    margin-block-start: 0.2em;
     margin-block-end: 0.3em;
-    font-size: 16px;
+    font-size: 17px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    .section-icon {
+      font-size: 15px;
+      opacity: 0.8;
+    }
   }
 
   ul {
     padding-inline-start: 0;
-    margin-block-start: 0.15em;
-    margin-block-end: 0.15em;
+    margin-block-start: 0.1em;
+    margin-block-end: 0.1em;
     list-style-type: none;
 
     li > ul {
       padding-inline-start: 1em;
-      margin-block-start: 0.25em;
+      margin-block-start: 0.2em;
       list-style-type: none;
     }
   }
@@ -76,9 +116,9 @@ section {
   }
 
   code {
-    font-size: 0.85em;
+    font-size: 0.82em;
     background: rgba(0, 0, 0, 0.06);
-    padding: 1px 3px;
+    padding: 1px 4px;
     border-radius: 3px;
   }
 }
@@ -93,9 +133,38 @@ section {
 }
 
 .bg-accent {
-  background-color: $theme-color-accent;
+  background-color: $theme-color-primary;
+  color: white;
+
+  h2 {
+    color: white !important;
+  }
 }
 
+/* ─── Banner strips ─── */
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8px 20px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.3;
+  border-radius: 10px;
+}
+
+.banner-accent {
+  background: linear-gradient(90deg, $theme-color-accent, #c45a18);
+  color: white;
+}
+
+.banner-primary {
+  background: linear-gradient(90deg, $theme-color-primary, #3278dc);
+  color: white;
+}
+
+/* ─── Links ─── */
 a {
   text-decoration: none;
 
@@ -104,29 +173,7 @@ a {
   }
 }
 
-.title {
-  font-size: 30px;
-  margin-block-start: 0.2em;
-  margin-block-end: 0.2em;
-}
-
-.authors {
-  font-size: 16px;
-  margin-block-start: 0.2em;
-  margin-block-end: 0.2em;
-}
-
-.affiliations {
-  font-size: 11px;
-  font-style: italic;
-  margin-block-start: 0.2em;
-  margin-block-end: 0;
-}
-
-.text-secondary {
-  color: $theme-color-secondary;
-}
-
+/* ─── Footer ─── */
 .logo {
   grid-row: 12;
   margin: auto;
@@ -142,25 +189,100 @@ a {
   text-align: center;
 
   p {
-    margin: 0 0 10px;
+    margin: 0 0 4px;
   }
 
   img {
-    height: 55px;
-    margin-top: -10px;
+    height: 50px;
+    margin-top: -5px;
+  }
+}
+
+.footer-contact {
+  grid-row: 12;
+  margin: auto;
+  font-size: 9px;
+  color: $theme-color-muted;
+  line-height: 1.5;
+
+  a {
+    color: $theme-color-primary;
+    font-weight: 600;
   }
 }
 
 small {
-  font-size: 12px;
+  font-size: 11px;
   color: $theme-color-muted;
 }
 
+/* ─── List icon markers ─── */
 .li-icon {
   margin-bottom: -1px;
-  color: $theme-color-primary;
+  color: $theme-color-accent;
+  margin-right: 2px;
 }
 
+.li-icon-white {
+  margin-bottom: -1px;
+  color: rgba(255, 255, 255, 0.85);
+  margin-right: 2px;
+}
+
+/* ─── Feature cards (icon + label grid) ─── */
+.feature-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.feature-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: white;
+  border-radius: 10px;
+  padding: 10px 6px 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+
+  .feature-icon {
+    font-size: 22px;
+    color: $theme-color-primary;
+    margin-bottom: 5px;
+  }
+
+  .feature-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #333;
+    line-height: 1.3;
+
+    strong {
+      color: $theme-color-primary;
+    }
+  }
+}
+
+.feature-card-dark {
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: none;
+
+  .feature-icon {
+    color: white;
+  }
+
+  .feature-label {
+    color: rgba(255, 255, 255, 0.95);
+
+    strong {
+      color: $theme-color-accent;
+    }
+  }
+}
+
+/* ─── Print ─── */
 @media print {
   body {
     background: white;
@@ -177,7 +299,7 @@ small {
 }
 
 @page {
-  size: 841px 1189px; /* A0 dimensions in millimeters */
+  size: 841px 1189px;
   margin: 0;
 }
 
