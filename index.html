@@ -26,16 +26,16 @@
             <h2 property="schema:name">Problem</h2>
             <ul>
                 <li>
-                    <i class="fa-solid fa-robot fa-2xs li-icon"></i> Autonomous agents increasingly <strong>write to shared RDF knowledge graphs</strong> concurrently — one enriches, another reasons, a third corrects.
+                    <i class="fa-solid fa-robot fa-2xs li-icon"></i> Multiple agents <strong>concurrently write</strong> to shared RDF knowledge graphs.
                 </li>
                 <li style="margin-top: 0.6em;">
-                    <i class="fa-solid fa-circle-nodes fa-2xs li-icon"></i> In <strong>decentralized data ecosystems</strong> (Solid, IDSA, Gaia-X), participants govern their own data without a central authority.
+                    <i class="fa-solid fa-circle-nodes fa-2xs li-icon"></i> <strong>Decentralized ecosystems</strong> (Solid, IDSA, Gaia-X) — no central authority.
                 </li>
                 <li style="margin-top: 0.6em;">
-                    <i class="fa-solid fa-wifi fa-2xs li-icon"></i> <strong>Concurrent offline editing</strong> causes write conflicts when agents reconnect — manual conflict resolution is undesirable for agents.
+                    <i class="fa-solid fa-wifi fa-2xs li-icon"></i> <strong>Offline editing → write conflicts</strong> on reconnect.
                 </li>
                 <li style="margin-top: 0.6em;">
-                    <i class="fa-solid fa-circle-exclamation fa-2xs li-icon"></i> Existing RDF CRDT approaches either require <strong>dedicated infrastructure</strong> (m-ld) or introduce <strong>consistency boundary problems</strong> by storing bookkeeping across multiple resources.
+                    <i class="fa-solid fa-circle-exclamation fa-2xs li-icon"></i> Existing approaches: <strong>dedicated servers</strong> (m-ld) or <strong>consistency boundary problems</strong> (binary blobs outside dataset).
                 </li>
             </ul>
         </section>
@@ -45,16 +45,16 @@
             <h2 property="schema:name" style="color: white;">Approach</h2>
             <ul>
                 <li>
-                    <i class="fa-solid fa-layer-group fa-2xs li-icon" style="color: white;"></i> Instantiate the <strong>state-based OR-Set</strong> CRDT over <strong>RDF 1.2 triple terms</strong> — triples can appear as objects of other triples.
+                    <i class="fa-solid fa-layer-group fa-2xs li-icon" style="color: white;"></i> <strong>State-based OR-Set CRDT</strong> over <strong>RDF 1.2 triple terms</strong>.
                 </li>
                 <li style="margin-top: 0.6em;">
-                    <i class="fa-solid fa-database fa-2xs li-icon" style="color: white;"></i> All bookkeeping stays <strong>within a single dataset</strong> — no external blobs or dedicated servers needed.
+                    <i class="fa-solid fa-database fa-2xs li-icon" style="color: white;"></i> All bookkeeping in a <strong>single dataset</strong> — no external blobs or servers.
                 </li>
                 <li style="margin-top: 0.6em;">
-                    <i class="fa-solid fa-trophy fa-2xs li-icon" style="color: white;"></i> <strong>Add-wins semantics</strong>: concurrent add and remove of the same triple always keeps the triple.
+                    <i class="fa-solid fa-trophy fa-2xs li-icon" style="color: white;"></i> <strong>Add-wins</strong>: concurrent add + remove → triple survives.
                 </li>
                 <li style="margin-top: 0.6em;">
-                    <i class="fa-solid fa-eye-slash fa-2xs li-icon" style="color: white;"></i> <strong>Transparent to agents</strong>: CRDT-aware datastore plugs into query engines — agents use standard SPARQL, unaware of merge machinery.
+                    <i class="fa-solid fa-eye-slash fa-2xs li-icon" style="color: white;"></i> <strong>Transparent</strong>: agents use standard SPARQL, unaware of CRDT merge.
                 </li>
             </ul>
         </section>
@@ -66,16 +66,16 @@
                 <div style="flex: 1;">
                     <ul>
                         <li>
-                            <i class="fa-solid fa-tags fa-2xs li-icon"></i> Each triple carries a set of unique <strong>add-tags</strong> (UUIDv4); removing moves tags to a <strong>tombstone set</strong>.
+                            <i class="fa-solid fa-tags fa-2xs li-icon"></i> Each triple carries unique <strong>add-tags</strong> (UUIDv4); removal moves tags to a <strong>tombstone set</strong>.
                         </li>
                         <li style="margin-top: 0.5em;">
-                            <i class="fa-solid fa-cube fa-2xs li-icon"></i> An <strong>identifying blank node</strong> links each tracked triple (via <code>crdt:tags</code>), its add-tags, and tombstones using RDF 1.2 triple terms.
+                            <i class="fa-solid fa-cube fa-2xs li-icon"></i> A <strong>blank node</strong> links triple term, add-tags, and tombstones via <code>crdt:tags</code>.
                         </li>
                         <li style="margin-top: 0.5em;">
-                            <i class="fa-solid fa-eye fa-2xs li-icon"></i> A triple is <strong>present</strong> when it has ≥1 add-tag <strong>not</strong> in its tombstone set.
+                            <i class="fa-solid fa-eye fa-2xs li-icon"></i> Triple is <strong>present</strong> ⟺ ≥1 add-tag not in tombstone set.
                         </li>
                         <li style="margin-top: 0.5em;">
-                            <i class="fa-solid fa-code-merge fa-2xs li-icon"></i> On <strong>merge</strong>, multiple identifying nodes for the same triple are consolidated into one.
+                            <i class="fa-solid fa-code-merge fa-2xs li-icon"></i> On <strong>merge</strong>: identifying nodes for the same triple are consolidated.
                         </li>
                     </ul>
                 </div>
@@ -95,40 +95,40 @@
                 <div style="flex: 1;">
                     <ul>
                         <li>
-                            <i class="fa-solid fa-globe fa-2xs li-icon"></i> State-based merge aligns with HTTP's <strong>REST semantics</strong> — exchanging full dataset state rather than operations.
+                            <i class="fa-solid fa-globe fa-2xs li-icon"></i> State-based merge aligns with <strong>REST semantics</strong> — exchange full state, not operations.
                         </li>
                         <li style="margin-top: 0.5em;">
-                            <i class="fa-solid fa-shield-halved fa-2xs li-icon"></i> <strong>ETag + conditional PUT</strong> (If-Match) avoids mid-air collisions — no additional infrastructure beyond what most Web servers already provide.
+                            <i class="fa-solid fa-shield-halved fa-2xs li-icon"></i> <strong>ETag + conditional PUT</strong> prevents mid-air collisions — no extra infrastructure.
                         </li>
                         <li style="margin-top: 0.5em;">
-                            <i class="fa-solid fa-plug fa-2xs li-icon"></i> CRDT-aware store implements <strong>RDFjs Store interface</strong> — plugs into Comunica for transparent SPARQL queries.
+                            <i class="fa-solid fa-plug fa-2xs li-icon"></i> Implements <strong>RDFjs Store interface</strong> → plugs into Comunica for SPARQL.
                         </li>
                         <li style="margin-top: 0.5em;">
-                            <i class="fa-solid fa-users fa-2xs li-icon"></i> <strong>CRDT-aware and CRDT-unaware clients</strong> coexist: unaware clients can still read the data.
+                            <i class="fa-solid fa-users fa-2xs li-icon"></i> <strong>CRDT-aware and unaware clients</strong> coexist on the same data.
                         </li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <!-- NTP Tombstone Optimization + Add-wins -->
+        <!-- NTP Tombstone Optimization -->
         <section class="bg-accent" style="grid-column: 1/7; grid-row: 10/12; margin-left: 30px;" rel="schema:hasPart" resource="#tombstone">
             <h2 property="schema:name" style="color: white;">NTP Tombstone Optimization</h2>
             <ul>
                 <li>
-                    <i class="fa-solid fa-clock fa-2xs li-icon" style="color: white;"></i> Tombstones accumulate indefinitely without garbage collection — a fundamental CRDT challenge.
+                    <i class="fa-solid fa-clock fa-2xs li-icon" style="color: white;"></i> Without GC, tombstones <strong>accumulate indefinitely</strong>.
                 </li>
                 <li style="margin-top: 0.4em;">
-                    <i class="fa-solid fa-satellite-dish fa-2xs li-icon" style="color: white;"></i> NTP guarantees max <strong>drift of 1000s</strong>; between two synchronized clients: max <strong>2000s difference</strong>.
+                    <i class="fa-solid fa-satellite-dish fa-2xs li-icon" style="color: white;"></i> NTP bounds: max <strong>2000s drift</strong> between any two clients.
                 </li>
                 <li style="margin-top: 0.4em;">
-                    <i class="fa-solid fa-stamp fa-2xs li-icon" style="color: white;"></i> Tags stamped with <code>crdt:stamp-uuid</code> (<code>{uuid}--{dateTime}</code>) enable time-based pruning.
+                    <i class="fa-solid fa-stamp fa-2xs li-icon" style="color: white;"></i> <code>crdt:stamp-uuid</code> tags enable <strong>time-based pruning</strong>.
                 </li>
                 <li style="margin-top: 0.4em;">
-                    <i class="fa-solid fa-broom fa-2xs li-icon" style="color: white;"></i> A tag is <strong>universally seen</strong> once older than <strong>d + 4000s</strong> — then safe to prune.
+                    <i class="fa-solid fa-broom fa-2xs li-icon" style="color: white;"></i> Tag universally seen after <strong>d + 4000s</strong> → safe to prune.
                 </li>
                 <li style="margin-top: 0.4em;">
-                    <i class="fa-solid fa-circle-check fa-2xs li-icon" style="color: white;"></i> Works in <strong>open ecosystems</strong> where replica sets are unknown — unlike prior approaches requiring causal delivery.
+                    <i class="fa-solid fa-circle-check fa-2xs li-icon" style="color: white;"></i> Works in <strong>open ecosystems</strong> — no known replica set required.
                 </li>
             </ul>
         </section>
@@ -138,19 +138,19 @@
             <h2 property="schema:name">Conclusion &amp; Future Work</h2>
             <ul>
                 <li>
-                    <i class="fa-solid fa-check-double fa-2xs li-icon"></i> State-based add-wins set CRDT modelled <strong>entirely in RDF 1.2</strong> — no infrastructure beyond RDF-over-HTTP with ETag support.
+                    <i class="fa-solid fa-check-double fa-2xs li-icon"></i> Add-wins set CRDT modelled <strong>entirely in RDF 1.2</strong>.
                 </li>
                 <li style="margin-top: 0.4em;">
-                    <i class="fa-solid fa-puzzle-piece fa-2xs li-icon"></i> Eliminates the <strong>consistency boundary problem</strong> — all bookkeeping within the dataset itself.
+                    <i class="fa-solid fa-puzzle-piece fa-2xs li-icon"></i> <strong>No consistency boundary</strong> — bookkeeping within the dataset.
                 </li>
                 <li style="margin-top: 0.4em;">
-                    <i class="fa-solid fa-wand-magic-sparkles fa-2xs li-icon"></i> Conflict resolution <strong>fully transparent</strong> to agents and SPARQL clients alike.
+                    <i class="fa-solid fa-wand-magic-sparkles fa-2xs li-icon"></i> <strong>Transparent</strong> conflict resolution for agents and SPARQL clients.
                 </li>
                 <li style="margin-top: 0.4em;">
-                    <i class="fa-solid fa-box-open fa-2xs li-icon"></i> <strong>PoC implementation</strong>: <code>orset-rdf-store</code> on npm.
+                    <i class="fa-solid fa-box-open fa-2xs li-icon"></i> PoC: <code>orset-rdf-store</code> on npm.
                 </li>
                 <li style="margin-top: 0.4em;">
-                    <i class="fa-solid fa-flask fa-2xs li-icon"></i> <strong>Future work</strong>: constraint-aware merge semantics — two valid states can merge into a state violating domain constraints.
+                    <i class="fa-solid fa-flask fa-2xs li-icon"></i> <strong>Future work</strong>: <strong>constraint-aware merge</strong> — valid states can merge into constraint-violating states.
                 </li>
             </ul>
         </section>
