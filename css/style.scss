@@ -123,6 +123,8 @@ header {
       display: flex;
       align-items: flex-start;
       gap: 2px;
+
+      &:last-child { margin-bottom: 0; }
     }
   }
 
