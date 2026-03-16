@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 220" font-family="Candara, sans-serif" font-size="11">
+  <!-- Background -->
+  <rect width="560" height="220" fill="#f8f9fa" rx="6"/>
+
+  <!-- Title -->
+  <text x="280" y="18" text-anchor="middle" font-weight="700" font-size="12" fill="#1e64c8">RDF 1.2 OR-Set State: Bookkeeping Dataset</text>
+
+  <!-- Named Graph: crdt:state -->
+  <rect x="10" y="28" width="250" height="90" rx="5" fill="white" stroke="#1e64c8" stroke-width="1.5"/>
+  <rect x="10" y="28" width="250" height="18" rx="5" fill="#1e64c8"/>
+  <text x="135" y="41" text-anchor="middle" fill="white" font-weight="700" font-size="10">crdt:state (visible triples)</text>
+
+  <!-- Triple in state -->
+  <text x="20" y="61" fill="#333" font-size="10">:alice :knows :bob .</text>
+  <text x="20" y="76" fill="#333" font-size="10">:alice :knows :carol .</text>
+  <text x="20" y="91" fill="#555" font-size="9" font-style="italic"># triples visible to SPARQL agents</text>
+  <text x="20" y="106" fill="#555" font-size="9" font-style="italic"># (present if ≥1 add-tag ∉ tombstones)</text>
+
+  <!-- Named Graph: crdt:tags -->
+  <rect x="10" y="128" width="250" height="80" rx="5" fill="white" stroke="#e26c22" stroke-width="1.5"/>
+  <rect x="10" y="128" width="250" height="18" rx="5" fill="#e26c22"/>
+  <text x="135" y="141" text-anchor="middle" fill="white" font-weight="700" font-size="10">crdt:tags (add-tag bookkeeping)</text>
+
+  <text x="20" y="161" fill="#333" font-size="10">_:t1 crdt:tags &lt;&lt;:alice :knows :bob&gt;&gt; .</text>
+  <text x="20" y="176" fill="#333" font-size="10">_:t1 crdt:add "uuid-abc" .</text>
+  <text x="20" y="191" fill="#555" font-size="9" font-style="italic"># one blank node per (triple, uuid) pair</text>
+
+  <!-- Named Graph: crdt:tombstones -->
+  <rect x="300" y="28" width="250" height="80" rx="5" fill="white" stroke="#555" stroke-width="1.5"/>
+  <rect x="300" y="28" width="250" height="18" rx="5" fill="#555"/>
+  <text x="425" y="41" text-anchor="middle" fill="white" font-weight="700" font-size="10">crdt:tombstones (removed tags)</text>
+
+  <text x="310" y="62" fill="#333" font-size="10">crdt:tombstones crdt:remove "uuid-xyz" .</text>
+  <text x="310" y="77" fill="#555" font-size="9" font-style="italic"># uuid-xyz → triple is absent</text>
+  <text x="310" y="92" fill="#555" font-size="9" font-style="italic"># (all add-tags are in tombstones)</text>
+
+  <!-- Merge formula box -->
+  <rect x="300" y="120" width="250" height="88" rx="5" fill="#eef4fc" stroke="#1e64c8" stroke-width="1.5"/>
+  <text x="425" y="137" text-anchor="middle" font-weight="700" font-size="11" fill="#1e64c8">Merge(S₁, S₂)</text>
+  <text x="310" y="155" fill="#333" font-size="10">tags   = tags₁  ∪  tags₂</text>
+  <text x="310" y="171" fill="#333" font-size="10">tombs  = tombs₁ ∪  tombs₂</text>
+  <text x="310" y="187" fill="#333" font-size="10">state  = triples where ∃tag ∉ tombs</text>
+  <text x="310" y="203" fill="#555" font-size="9" font-style="italic">Add-wins: concurrent add+remove → kept</text>
+
+  <!-- Arrows -->
+  <line x1="260" y1="72" x2="298" y2="72" stroke="#aaa" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr)"/>
+  <text x="279" y="68" text-anchor="middle" fill="#888" font-size="8">check</text>
+
+  <defs>
+    <marker id="arr" markerWidth="6" markerHeight="6" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L6,3 z" fill="#aaa"/>
+    </marker>
+  </defs>
+</svg>
