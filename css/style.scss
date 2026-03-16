@@ -77,16 +77,6 @@ a {
   grid-row: 4 / span 7;
   padding: 8px 12px;
   align-content: center;
-
-  ol {
-    padding-inline-start: 1.5em;
-    margin: 0;
-
-    li {
-      margin-bottom: 0.8em;
-      line-height: 1.4;
-    }
-  }
 }
 
 // ─── Agents Figure (top right, no panel title) ──────
@@ -113,10 +103,11 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   text-align: center;
   border-radius: 6px;
+  gap: 0.3em;
 }
 
 // ─── RDF Model (middle left, no panel title) ────────
@@ -251,6 +242,10 @@ ul {
 .li-icon {
   margin-right: 4px;
   color: $theme-color-accent;
+}
+
+.li-icon-flip {
+  transform: scaleY(-1);
 }
 
 code {
