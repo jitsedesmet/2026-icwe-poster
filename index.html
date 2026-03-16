@@ -27,60 +27,59 @@
             </div>
             <div class="header-logos">
                 <a href="https://www.ugent.be/en" target="_blank">
-                    <img src="/img/logos/logo-ugent-white.svg" alt="UGent logo" style="height: 50px;"/>
+                    <img src="/img/logos/logo-ugent-white.svg" alt="UGent logo" style="height: 45px;"/>
                 </a>
                 <a href="https://idlab.technology/" target="_blank">
-                    <img src="/img/logos/logo-idlab-white.svg" alt="IDLab logo" style="height: 30px;"/>
+                    <img src="/img/logos/logo-idlab-white.svg" alt="IDLab logo" style="height: 28px;"/>
+                </a>
+                <a href="https://www.fwo.be/en/" target="_blank">
+                    <img src="/img/logos/logo-fwo-white.svg" alt="FWO logo" style="height: 28px;"/>
                 </a>
             </div>
         </header>
 
-        <!-- ===== 1. PROBLEM ===== -->
-        <section style="grid-column: 1/7; grid-row: 3/6; margin-left: 8px;" rel="schema:hasPart" resource="#problem">
-            <h2 property="schema:name"><span class="section-number">1</span>Problem</h2>
-            <div class="key-point">
-                <i class="fa-solid fa-circle-exclamation fa-2xs li-icon"></i>
-                <span>In <strong>decentralized data ecosystems</strong> (Solid, IDSA, Gaia-X), multiple agents read from and write to shared RDF knowledge graphs <strong>concurrently</strong> — even while offline.</span>
-            </div>
-            <div class="key-point">
-                <i class="fa-solid fa-triangle-exclamation fa-2xs li-icon"></i>
-                <span>When two agents independently modify the same resource while <strong>offline</strong>, their updates <strong>collide</strong> once connection is restored.</span>
-            </div>
-            <div class="key-point">
-                <i class="fa-solid fa-question-circle fa-2xs li-icon"></i>
-                <span>How can we achieve <strong>conflict-free convergence</strong> without dedicated infrastructure — using only what the Web already provides?</span>
-            </div>
-            <div class="key-point">
-                <i class="fa-solid fa-bullseye fa-2xs li-icon"></i>
-                <span><strong>CRDTs</strong> (Conflict-free Replicated Data Types) guarantee convergence through well-defined merge algorithms, with no coordination required.</span>
-            </div>
+        <!-- ===== 1. INTRODUCTION ===== -->
+        <section style="grid-column: 1/7; grid-row: 3/6; margin-left: 8px;" rel="schema:hasPart" resource="#introduction">
+            <h2 property="schema:name"><span class="section-number">1</span>Introduction</h2>
+            <ul>
+                <li>
+                    <span class="dash">─</span> In <strong>decentralized data ecosystems</strong> (Solid, IDSA, Gaia-X), multiple agents read from and write to shared RDF knowledge graphs <strong>concurrently</strong>.
+                </li>
+                <li>
+                    <span class="dash">─</span> When agents independently modify the same resource while <strong>offline</strong>, their updates <strong>collide</strong> once connection is restored.
+                </li>
+                <li>
+                    <span class="dash">─</span> <strong>CRDTs</strong> (Conflict-free Replicated Data Types) guarantee convergence through well-defined merge algorithms, with no coordination required.
+                </li>
+                <li>
+                    <span class="dash">─</span> RDF 1.2 <strong>triple terms</strong> enable first-class modelling of state-based CRDTs directly within RDF datasets, without external bookkeeping.
+                </li>
+            </ul>
         </section>
 
         <!-- ===== 2. RELATED WORK ===== -->
         <section class="accent-heading" style="grid-column: 7/13; grid-row: 3/6; margin-right: 8px;" rel="schema:hasPart" resource="#related-work">
             <h2 property="schema:name"><span class="section-number accent">2</span>Related Work</h2>
-            <div class="key-point">
-                <i class="fa-solid fa-minus fa-2xs li-icon"></i>
-                <span><strong>m-ld</strong> — JavaScript CRDT engine for RDF, but requires a <em>dedicated domain server</em>.</span>
-            </div>
-            <div class="key-point">
-                <i class="fa-solid fa-minus fa-2xs li-icon"></i>
-                <span><strong>Gruss et al.</strong> — RDF state + binary CRDT blob (Yjs/Automerge); introduces a <em>consistency boundary problem</em> where a standard HTTP server cannot atomically update multiple resources.</span>
-            </div>
-            <div class="key-point">
-                <i class="fa-solid fa-minus fa-2xs li-icon"></i>
-                <span><strong>SU-Set</strong> — extends OR-Set for RDF but uses an <em>operation-based</em> approach.</span>
-            </div>
-            <div class="key-point">
-                <i class="fa-solid fa-arrow-right fa-2xs li-icon" style="color: #1e64c8;"></i>
-                <span>We adopt the <strong>state-based OR-Set</strong> which aligns naturally with HTTP REST semantics — exchanging full dataset state rather than individual operations.</span>
-            </div>
+            <ul>
+                <li>
+                    <span class="dash">─</span> <strong>m-ld</strong> — JavaScript CRDT engine for RDF, but requires a <em>dedicated domain server</em>.
+                </li>
+                <li>
+                    <span class="dash">─</span> <strong>Gruss et al.</strong> — RDF state + binary CRDT blob (Yjs/Automerge); introduces a <em>consistency boundary problem</em>.
+                </li>
+                <li>
+                    <span class="dash">─</span> <strong>SU-Set</strong> — extends OR-Set for RDF but uses an <em>operation-based</em> approach.
+                </li>
+                <li>
+                    <span class="dash accent-dash">─</span> We adopt the <strong>state-based OR-Set</strong> which aligns naturally with HTTP REST semantics — exchanging full dataset state rather than individual operations.
+                </li>
+            </ul>
         </section>
 
         <!-- ===== 3. OUR APPROACH ===== -->
         <section style="grid-column: 1/7; grid-row: 6/9; margin-left: 8px;" rel="schema:hasPart" resource="#approach">
             <h2 property="schema:name"><span class="section-number">3</span>State-based Add-Wins OR-Set in RDF 1.2</h2>
-            <p>Each RDF triple carries a set of <strong>unique add-tags</strong> (UUIDv4). Removing a triple moves its tags to a <strong>tombstone set</strong> — ensuring a concurrent add always wins.</p>
+            <p>Each RDF triple carries a set of <strong>unique add-tags</strong> (UUIDv4). Removing a triple moves its tags to a <strong>tombstone set</strong> rather than deleting them — ensuring a concurrent add always wins.</p>
             <p><strong>RDF 1.2 triple terms</strong> allow a triple to appear in the object position of another triple, enabling all bookkeeping <strong>within the same dataset</strong> — no external infrastructure needed.</p>
             <p>A triple is <strong>present</strong> when it has at least one add-tag not in its tombstone set. On merge, identifying nodes for the same triple are consolidated.</p>
         </section>
@@ -107,38 +106,33 @@
             </figure>
         </section>
 
-        <!-- ===== 5. NTP TOMBSTONE OPTIMIZATION ===== -->
-        <section style="grid-column: 1/7; grid-row: 9/12; margin-left: 8px;" rel="schema:hasPart" resource="#ntp">
-            <h2 property="schema:name"><span class="section-number">5</span>NTP Tombstone Optimization</h2>
-            <p>Without garbage collection, <strong>tombstones accumulate indefinitely</strong>. Existing solutions require causal delivery and a known replica set — assumptions that fail in open ecosystems.</p>
-            <p>We exploit <strong>NTP synchronization</strong>: since NTP panics after &gt;1000s drift, any two synchronized clients differ by at most 2000s. A tag is universally seen once its timestamp is older than <strong>d + 4000s</strong>, enabling safe pruning without knowing the replica set.</p>
+        <!-- ===== BOTTOM ROW: 3 columns ===== -->
+        <!-- ===== 5. NTP TOMBSTONE (orange) ===== -->
+        <section class="bg-accent-fill" style="grid-column: 1/5; grid-row: 9/12; margin-left: 8px;" rel="schema:hasPart" resource="#ntp">
+            <h2 property="schema:name"><span class="section-number" style="background: white; color: #e26c22;">5</span>NTP Tombstone Optimization</h2>
+            <p>Without garbage collection, <strong style="color: white;">tombstones accumulate indefinitely</strong>.</p>
+            <p>We exploit <strong style="color: white;">NTP synchronization</strong>: since NTP panics after &gt;1000s drift, any two synchronized clients differ by at most 2000s.</p>
+            <p>A tag is universally seen once its timestamp is older than <strong style="color: white;">d + 4000s</strong>, enabling safe pruning without knowing the replica set.</p>
         </section>
 
-        <!-- ===== 6. KEY PROPERTIES ===== -->
-        <section class="accent-heading" style="grid-column: 7/13; grid-row: 9/11; margin-right: 8px;" rel="schema:hasPart" resource="#properties">
-            <h2 property="schema:name"><span class="section-number accent">6</span>Key Properties</h2>
-            <div class="key-point">
-                <i class="fa-solid fa-check fa-2xs li-icon" style="color: #1e64c8;"></i>
-                <span>No infrastructure beyond <strong>RDF-over-HTTP + ETag</strong></span>
-            </div>
-            <div class="key-point">
-                <i class="fa-solid fa-check fa-2xs li-icon" style="color: #1e64c8;"></i>
-                <span>All bookkeeping inside the dataset — <strong>no consistency boundary</strong></span>
-            </div>
-            <div class="key-point">
-                <i class="fa-solid fa-check fa-2xs li-icon" style="color: #1e64c8;"></i>
-                <span><strong>CRDT-aware and unaware</strong> clients coexist</span>
-            </div>
-            <div class="key-point">
-                <i class="fa-solid fa-check fa-2xs li-icon" style="color: #1e64c8;"></i>
-                <span>Transparent to <strong>SPARQL</strong> query engines</span>
-            </div>
+        <!-- ===== 6. KEY PROPERTIES (white) ===== -->
+        <section style="grid-column: 5/9; grid-row: 9/12;" rel="schema:hasPart" resource="#properties">
+            <h2 property="schema:name"><span class="section-number">6</span>Key Properties</h2>
+            <ul>
+                <li><span class="dash">─</span> No infrastructure beyond <strong>RDF-over-HTTP + ETag</strong></li>
+                <li><span class="dash">─</span> All bookkeeping inside the dataset — <strong>no consistency boundary</strong></li>
+                <li><span class="dash">─</span> <strong>CRDT-aware and unaware</strong> clients coexist</li>
+                <li><span class="dash">─</span> Transparent to <strong>SPARQL</strong> query engines</li>
+                <li><span class="dash">─</span> <strong>PoC implementation</strong>: <a href="https://www.npmjs.com/package/orset-rdf-store" target="_blank">orset-rdf-store</a></li>
+            </ul>
         </section>
 
-        <!-- ===== 7. CONCLUSION & FUTURE WORK ===== -->
-        <section class="bg-accent-fill" style="grid-column: 7/13; grid-row: 11/12; margin-right: 8px;" rel="schema:hasPart" resource="#conclusion">
-            <h2 property="schema:name"><span class="section-number" style="background: white; color: #e26c22;">7</span>Conclusion &amp; Future Work</h2>
-            <p style="margin: 0;">A state-based add-wins set CRDT modelled in <strong>RDF 1.2</strong>, pluggable into existing query engines. <strong>Future work:</strong> constraint-aware merge semantics.</p>
+        <!-- ===== 7. CONCLUSION (blue) ===== -->
+        <section class="bg-dark-fill" style="grid-column: 9/13; grid-row: 9/12; margin-right: 8px;" rel="schema:hasPart" resource="#conclusion">
+            <h2 property="schema:name"><span class="section-number" style="background: white; color: #1e64c8;">7</span>Conclusion &amp; Future Work</h2>
+            <p>A state-based add-wins set CRDT modelled entirely in <strong style="color: white;">RDF 1.2</strong>, requiring no infrastructure beyond RDF-over-HTTP with ETag support.</p>
+            <p>By abstracting at the quad-store level, the CRDT can be plugged into existing <strong style="color: white;">query engines</strong>, making conflict resolution fully transparent.</p>
+            <p><strong style="color: white;">Future work:</strong> constraint-aware merge semantics for RDF CRDTs.</p>
         </section>
 
         <!-- ===== FOOTER ===== -->
