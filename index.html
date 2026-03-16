@@ -11,200 +11,136 @@
 <div id="poster-wrapper">
     <div id="app">
         <!-- ═══════ HEADER ═══════ -->
-        <header style="grid-column: 1/13; grid-row: 1/2;">
-            <div class="header-inner" style="margin: 16px 30px 12px;">
-                <h1 property="schema:name schema:headline" class="title">
-                    A State-Based <span class="highlight">Add-Wins CRDT</span><br/>
-                    for <span class="highlight">RDF</span> Datastores
-                </h1>
+        <header>
+            <div class="header-logos">
+                <a href="https://www.ugent.be/en" target="_blank">
+                    <img src="/img/logos/logo-ugent-white.svg" alt="UGent"/>
+                </a>
+                <a href="https://www.imec-int.com/en" target="_blank">
+                    <img src="/img/logos/logo-imec-white.svg" alt="imec"/>
+                </a>
+                <a href="https://idlab.technology/" target="_blank">
+                    <img src="/img/logos/logo-idlab-white.svg" alt="IDLab"/>
+                </a>
+                <a href="https://www.fwo.be/en/" target="_blank">
+                    <img src="/img/logos/logo-fwo-white.svg" alt="FWO"/>
+                </a>
+            </div>
+            <h1 property="schema:name schema:headline" class="title">
+                A State-Based <span class="highlight">Add-Wins CRDT</span><br/>
+                for <span class="highlight">RDF</span> Datastores
+            </h1>
+            <div class="header-meta">
                 <h2 class="authors">
                     <a property="schema:author" href="https://jitsedesmet.be/" resource="https://jitsedesmet.be/profile#me">Jitse De Smet</a>,
                     <a property="schema:author" href="https://www.rubensworks.net/" resource="https://www.rubensworks.net/#me">Ruben Taelman</a>
                 </h2>
-                <p class="affiliations">IDLab, Department of Electronics and Information Systems, Ghent University – imec, Ghent, Belgium</p>
+                <p class="affiliations">IDLab, Dept. of Electronics and Information Systems, Ghent University – imec</p>
             </div>
         </header>
 
-        <!-- ═══════ PROBLEM — white card, blue left border ═══════ -->
-        <section class="section-bordered" style="grid-column: 1/7; grid-row: 2/5; margin-left: 30px;" rel="schema:hasPart" resource="#problem">
-            <h2 property="schema:name"><i class="fa-solid fa-triangle-exclamation section-icon"></i> Problem</h2>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <i class="fa-solid fa-robot feature-icon"></i>
-                    <span class="feature-label"><strong>Concurrent writes</strong> to shared RDF graphs</span>
-                </div>
-                <div class="feature-card">
-                    <i class="fa-solid fa-circle-nodes feature-icon"></i>
-                    <span class="feature-label"><strong>Decentralized</strong> — no central authority</span>
-                </div>
-                <div class="feature-card">
-                    <i class="fa-solid fa-wifi feature-icon"></i>
-                    <span class="feature-label"><strong>Offline editing</strong> → write conflicts</span>
-                </div>
-                <div class="feature-card">
-                    <i class="fa-solid fa-circle-exclamation feature-icon"></i>
-                    <span class="feature-label">Existing: <strong>extra servers</strong> or <strong>boundary problems</strong></span>
-                </div>
-            </div>
+        <!-- ═══════ ROW 2: PROBLEM + APPROACH ═══════ -->
+        <section class="card" style="grid-column: 1/7; grid-row: 2/4;" rel="schema:hasPart" resource="#problem">
+            <h2 property="schema:name"><span class="section-num">1</span> The Problem</h2>
+            <ul>
+                <li><i class="fa-solid fa-robot li-icon"></i> <strong>Autonomous agents</strong> write concurrently to shared RDF knowledge graphs</li>
+                <li><i class="fa-solid fa-circle-nodes li-icon"></i> <strong>Decentralized ecosystems</strong> (Solid, IDSA, Gaia-X) have no central coordinator</li>
+                <li><i class="fa-solid fa-wifi li-icon"></i> <strong>Offline editing</strong> leads to divergent states and write conflicts</li>
+                <li><i class="fa-solid fa-ban li-icon"></i> Existing CRDTs suffer a <strong>consistency boundary problem</strong> or require extra servers</li>
+            </ul>
         </section>
 
-        <!-- ═══════ APPROACH — orange accent cards ═══════ -->
-        <section class="section-bordered-accent" style="grid-column: 7/13; grid-row: 2/5; margin-right: 30px;" rel="schema:hasPart" resource="#approach">
-            <h2 property="schema:name" style="color: #e26c22;"><i class="fa-solid fa-lightbulb section-icon"></i> Approach</h2>
-            <div class="feature-grid">
-                <div class="feature-card feature-card-accent">
-                    <i class="fa-solid fa-layer-group feature-icon"></i>
-                    <span class="feature-label"><strong>OR-Set CRDT</strong> over RDF 1.2 triple terms</span>
-                </div>
-                <div class="feature-card feature-card-accent">
-                    <i class="fa-solid fa-database feature-icon"></i>
-                    <span class="feature-label">All in <strong>one dataset</strong> — no blobs</span>
-                </div>
-                <div class="feature-card feature-card-accent">
-                    <i class="fa-solid fa-trophy feature-icon"></i>
-                    <span class="feature-label"><strong>Add-wins</strong>: add + remove → keeps triple</span>
-                </div>
-                <div class="feature-card feature-card-accent">
-                    <i class="fa-solid fa-eye-slash feature-icon"></i>
-                    <span class="feature-label"><strong>Transparent</strong> to SPARQL agents</span>
-                </div>
-            </div>
+        <section class="card card-accent" style="grid-column: 7/13; grid-row: 2/4;" rel="schema:hasPart" resource="#approach">
+            <h2 property="schema:name"><span class="section-num accent">2</span> Our Approach</h2>
+            <ul>
+                <li><i class="fa-solid fa-layer-group li-icon"></i> <strong>OR-Set CRDT</strong> modelled in RDF 1.2 triple terms</li>
+                <li><i class="fa-solid fa-database li-icon"></i> Bookkeeping in <strong>one dataset</strong> — no opaque blobs</li>
+                <li><i class="fa-solid fa-trophy li-icon"></i> <strong>Add-wins</strong> semantics: concurrent add + remove keeps triple</li>
+                <li><i class="fa-solid fa-eye-slash li-icon"></i> <strong>Transparent</strong> to standard SPARQL agents</li>
+            </ul>
         </section>
 
-        <!-- ═══════ BANNER: Key insight ═══════ -->
-        <div class="banner banner-accent" style="grid-column: 1/13; grid-row: 5/6; margin: 0 30px;">
-            <i class="fa-solid fa-quote-left" style="margin-right: 8px; opacity: 0.6;"></i>
-            Conflict-free RDF replication using only <strong style="margin: 0 3px;">standard Web infrastructure</strong>
-            <i class="fa-solid fa-quote-right" style="margin-left: 8px; opacity: 0.6;"></i>
-        </div>
-
-        <!-- ═══════ DATA MODEL — white card, blue border ═══════ -->
-        <section class="section-bordered" style="grid-column: 1/13; grid-row: 6/9; margin-left: 30px; margin-right: 30px;" rel="schema:hasPart" resource="#data-model">
-            <h2 property="schema:name"><i class="fa-solid fa-cubes section-icon"></i> State-Based OR-Set in RDF 1.2</h2>
-            <div style="display: flex; gap: 12px; align-items: flex-start;">
-                <div style="flex: 0 0 42%;">
+        <!-- ═══════ ROW 3: DATA MODEL ═══════ -->
+        <section class="card card-wide" style="grid-column: 1/13; grid-row: 4/7;" rel="schema:hasPart" resource="#data-model">
+            <h2 property="schema:name"><span class="section-num">3</span> RDF 1.2 Data Model</h2>
+            <div class="fig-row">
+                <div class="fig-text">
                     <ul>
-                        <li>
-                            <span class="li-dash"></span> Each triple carries <strong>add-tags</strong>; removal → <strong>tombstone set</strong>
-                        </li>
-                        <li style="margin-top: 0.5em;">
-                            <span class="li-dash"></span> <strong>Blank node</strong> links triple term + tags via <code>crdt:tags</code>
-                        </li>
-                        <li style="margin-top: 0.5em;">
-                            <span class="li-dash"></span> Present ⟺ ≥1 add-tag <strong>not</strong> in tombstones
-                        </li>
-                        <li style="margin-top: 0.5em;">
-                            <span class="li-dash"></span> <strong>Merge</strong> consolidates nodes for same triple
-                        </li>
+                        <li><i class="fa-solid fa-tags li-icon"></i> Each triple has <strong>add-tags</strong> (UUIDs); removal adds tags to <strong>tombstone set</strong></li>
+                        <li><i class="fa-solid fa-link li-icon"></i> A <strong>blank node</strong> links a triple term to its tags via <code>crdt:tags</code></li>
+                        <li><i class="fa-solid fa-check-circle li-icon"></i> Triple is <strong>present</strong> iff ≥1 add-tag is <strong>not</strong> in tombstones</li>
+                        <li><i class="fa-solid fa-code-merge li-icon"></i> <strong>Merge</strong> = union of add-tags, union of tombstones, consolidate per triple</li>
                     </ul>
                 </div>
-                <div style="flex: 1; display: flex; align-items: center; justify-content: center;">
-                    <img src="/img/fig-orset-model.svg" alt="RDF 1.2 OR-Set representation" style="width: 100%; max-height: 220px;"/>
+                <div class="fig-image">
+                    <img src="/img/fig-orset-model.svg" alt="RDF 1.2 OR-Set data model"/>
                 </div>
             </div>
         </section>
 
-        <!-- ═══════ WEB SYNC — white card, orange border ═══════ -->
-        <section class="section-bordered-accent" style="grid-column: 1/13; grid-row: 9/11; margin-left: 30px; margin-right: 30px;" rel="schema:hasPart" resource="#web-sync">
-            <h2 property="schema:name" style="color: #e26c22;"><i class="fa-solid fa-globe section-icon"></i> Web Synchronization</h2>
-            <div style="display: flex; gap: 12px; align-items: flex-start;">
-                <div style="flex: 1; display: flex; align-items: center; justify-content: center;">
-                    <img src="/img/fig-web-sync.svg" alt="HTTP sync with ETags" style="width: 100%; max-height: 170px;"/>
+        <!-- ═══════ ROW 4: WEB SYNC ═══════ -->
+        <section class="card card-wide" style="grid-column: 1/13; grid-row: 7/9;" rel="schema:hasPart" resource="#web-sync">
+            <h2 property="schema:name"><span class="section-num accent">4</span> Web Synchronization</h2>
+            <div class="fig-row fig-row-reverse">
+                <div class="fig-image">
+                    <img src="/img/fig-web-sync.svg" alt="Web sync architecture"/>
                 </div>
-                <div style="flex: 0 0 42%;">
+                <div class="fig-text">
                     <ul>
-                        <li>
-                            <span class="li-dash"></span> <strong>REST-aligned</strong> — exchange full state
-                        </li>
-                        <li style="margin-top: 0.5em;">
-                            <span class="li-dash"></span> <strong>ETag + PUT</strong> prevents mid-air collisions
-                        </li>
-                        <li style="margin-top: 0.5em;">
-                            <span class="li-dash"></span> <strong>RDFjs Store</strong> → Comunica SPARQL
-                        </li>
-                        <li style="margin-top: 0.5em;">
-                            <span class="li-dash"></span> <strong>Aware + unaware</strong> clients coexist
-                        </li>
+                        <li><i class="fa-solid fa-arrows-rotate li-icon"></i> <strong>State-based</strong> — exchange full state, no log shipping</li>
+                        <li><i class="fa-solid fa-lock li-icon"></i> <strong>ETag + If-Match</strong> prevents mid-air collisions on PUT</li>
+                        <li><i class="fa-solid fa-server li-icon"></i> Any <strong>RDF-over-HTTP</strong> endpoint (e.g. Solid pod)</li>
+                        <li><i class="fa-solid fa-users li-icon"></i> CRDT-aware and <strong>unaware clients coexist</strong></li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <!-- ═══════ TOMBSTONE — filled accent (orange gradient) ═══════ -->
-        <section class="section-filled-accent" style="grid-column: 1/5; grid-row: 11/12; margin-left: 30px; border-radius: 10px;" rel="schema:hasPart" resource="#tombstone">
-            <h2 property="schema:name"><i class="fa-solid fa-clock section-icon"></i> NTP Tombstone GC</h2>
+        <!-- ═══════ ROW 5: TOMBSTONE + CONCLUSION + FUTURE ═══════ -->
+        <section class="card card-filled-accent" style="grid-column: 1/5; grid-row: 9/11;" rel="schema:hasPart" resource="#tombstone">
+            <h2 property="schema:name"><span class="section-num-light">5</span> Tombstone GC</h2>
             <ul>
-                <li>
-                    <span class="li-dash-white"></span> NTP drift ≤ <strong>2000s</strong>
-                </li>
-                <li style="margin-top: 0.35em;">
-                    <span class="li-dash-white"></span> <code>stamp-uuid</code> → time-based pruning
-                </li>
-                <li style="margin-top: 0.35em;">
-                    <span class="li-dash-white"></span> Safe prune after <strong>d + 4000s</strong>
-                </li>
-                <li style="margin-top: 0.35em;">
-                    <span class="li-dash-white"></span> <strong>Open ecosystems</strong> — no replica set
-                </li>
+                <li><i class="fa-solid fa-clock li-icon-light"></i> NTP drift bound ≤ <strong>2 000 ms</strong></li>
+                <li><i class="fa-solid fa-fingerprint li-icon-light"></i> <code>stamp-uuid</code> encodes timestamp</li>
+                <li><i class="fa-solid fa-trash li-icon-light"></i> Safe pruning after <strong>d + 4 000 s</strong></li>
+                <li><i class="fa-solid fa-globe li-icon-light"></i> Works in <strong>open ecosystems</strong></li>
             </ul>
         </section>
 
-        <!-- ═══════ CONCLUSION — white, blue border ═══════ -->
-        <section class="section-bordered" style="grid-column: 5/10; grid-row: 11/12;" rel="schema:hasPart" resource="#conclusion">
-            <h2 property="schema:name"><i class="fa-solid fa-flag-checkered section-icon"></i> Conclusion</h2>
+        <section class="card" style="grid-column: 5/9; grid-row: 9/11;" rel="schema:hasPart" resource="#conclusion">
+            <h2 property="schema:name"><span class="section-num">6</span> Conclusion</h2>
             <ul>
-                <li>
-                    <span class="li-dash"></span> CRDT modelled <strong>entirely in RDF 1.2</strong>
-                </li>
-                <li style="margin-top: 0.35em;">
-                    <span class="li-dash"></span> <strong>No boundary problem</strong>
-                </li>
-                <li style="margin-top: 0.35em;">
-                    <span class="li-dash"></span> PoC: <code>orset-rdf-store</code>
-                </li>
+                <li><i class="fa-solid fa-check li-icon"></i> CRDT modelled <strong>entirely in RDF 1.2</strong></li>
+                <li><i class="fa-solid fa-border-none li-icon"></i> <strong>No consistency boundary</strong> problem</li>
+                <li><i class="fa-solid fa-code li-icon"></i> PoC: <a href="https://github.com/jitsedesmet/ORset-RDF-store"><code>orset-rdf-store</code></a></li>
             </ul>
         </section>
 
-        <!-- ═══════ FUTURE — filled dark blue ═══════ -->
-        <section class="section-filled-dark" style="grid-column: 10/13; grid-row: 11/12; margin-right: 30px; border-radius: 10px;" rel="schema:hasPart" resource="#future">
-            <h2 property="schema:name" style="font-size: 15px;"><i class="fa-solid fa-flask section-icon"></i> Future work</h2>
+        <section class="card card-filled-dark" style="grid-column: 9/13; grid-row: 9/11;" rel="schema:hasPart" resource="#future">
+            <h2 property="schema:name"><span class="section-num-light">7</span> Future Work</h2>
             <ul>
-                <li>
-                    <span class="li-dash-white"></span> <strong>Constraint-aware merge</strong>
-                </li>
-                <li style="margin-top: 0.35em; font-size: 12px; opacity: 0.9;">
-                    Valid states can merge into constraint-violating states
-                </li>
+                <li><i class="fa-solid fa-flask li-icon-light"></i> <strong>Constraint-aware merge</strong></li>
+                <li><i class="fa-solid fa-triangle-exclamation li-icon-light"></i> Valid states can merge into <strong>constraint-violating</strong> states</li>
             </ul>
         </section>
 
-        <!-- ═══════ FOOTER BAR ═══════ -->
-        <div class="footer-bar">
-            <div class="footer-emails">
-                <a href="mailto:Jitse.DeSmet@ugent.be">Jitse.DeSmet@ugent.be</a><br/>
-                <a href="mailto:Ruben.Taelman@ugent.be">Ruben.Taelman@ugent.be</a>
-            </div>
-            <div class="footer-qr">
-                <p>Paper</p>
-                <a href="https://2026-icwe-poster.jitsedesmet.be/" target="_blank">
-                    <img src="/img/logos/logo-ugent.svg" alt="Link to poster paper"/>
-                </a>
-            </div>
-            <div class="footer-logos">
-                <a href="https://www.fwo.be/en/" target="_blank">
-                    <img src="/img/logos/logo-fwo-white.svg" alt="FWO logo" style="height: 30px; filter: brightness(0);"/>
-                </a>
-                <a href="https://www.ugent.be/en" target="_blank">
-                    <img src="/img/logos/logo-ugent.png" alt="UGent logo" style="height: 40px;"/>
-                </a>
-                <a href="https://www.imec-int.com/en" target="_blank">
-                    <img src="/img/logos/logo-imec.png" alt="imec logo" style="height: 25px;"/>
-                </a>
-                <a href="https://idlab.technology/" target="_blank">
-                    <img src="/img/logos/logo-idlab.png" alt="IDLab logo" style="height: 30px;"/>
-                </a>
-            </div>
+        <!-- ═══════ TAKEAWAY BANNER ═══════ -->
+        <div class="takeaway" style="grid-column: 1/13; grid-row: 11/12;">
+            <i class="fa-solid fa-lightbulb"></i>
+            Conflict-free RDF replication using <strong>only standard Web infrastructure</strong> — no extra servers, no boundary problem.
         </div>
+
+        <!-- ═══════ FOOTER ═══════ -->
+        <footer>
+            <div class="footer-contact">
+                <a href="mailto:Jitse.DeSmet@ugent.be"><i class="fa-solid fa-envelope"></i> Jitse.DeSmet@ugent.be</a>
+                <a href="mailto:Ruben.Taelman@ugent.be"><i class="fa-solid fa-envelope"></i> Ruben.Taelman@ugent.be</a>
+            </div>
+            <div class="footer-link">
+                <small>Paper & code →</small>
+                <a href="https://2026-icwe-poster.jitsedesmet.be/">2026-icwe-poster.jitsedesmet.be</a>
+            </div>
+        </footer>
     </div>
 </div>
 <script type="module" src="/js/main.js"></script>
