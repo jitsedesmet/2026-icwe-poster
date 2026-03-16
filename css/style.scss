@@ -1,340 +1,208 @@
-// ═══════ Design Tokens ═══════
-$blue:       #1e64c8;
-$blue-dark:  #0d3b7a;
-$blue-light: #eef4fc;
-$orange:     #e26c22;
-$orange-light: #fff3e0;
-$gray-bg:    #f5f7fa;
-$gray-border:#dfe3ea;
-$gray-text:  #555;
-$dark:       #1a1a2e;
-$font:       Candara, sans-serif;
+$theme-color-primary: #1e64c8;
+$theme-color-secondary: #0d3b7a;
+$theme-color-accent: #e26c22;
+$theme-color-light: #eef4fc;
+$theme-color-muted: #6b7280;
+$theme-font-family: Candara, sans-serif;
 
-// ═══════ Page Shell ═══════
 body {
   position: absolute;
-  top: 50%; left: 50%;
+  top: 50%;
+  left: 50%;
   overflow: hidden;
   margin: calc(1189px / -2) 0 0 calc(841px / -2);
-  width: 841px; height: 1189px;
+  width: 841px;
+  height: 1189px;
   background-color: gray;
 }
 
 #app {
-  position: absolute; top: 0; left: 0;
-  margin: 0; padding: 0;
-  overflow: hidden; box-sizing: border-box;
-  width: 841px; height: 1189px;
-  background: $gray-bg;
-  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+  clip: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+  aspect-ratio: 841 / 1189;
+  background: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: auto repeat(9, 1fr) auto auto;
+  grid-template-rows: repeat(12, 1fr);
   gap: 10px;
-  padding: 0 20px 0;
-  font-family: $font;
-  font-size: 13px;
-  color: #222;
+  font-family: $theme-font-family;
+  font-size: 15px;
 }
 
-// ═══════ Header ═══════
 header {
-  grid-column: 1 / 13;
-  grid-row: 1;
-  background: linear-gradient(135deg, $blue-dark 0%, $blue 50%, #2874d8 100%);
-  margin: 0 -20px;
-  padding: 14px 28px 12px;
-  display: flex;
-  flex-direction: column;
+  width: 100%;
+
+  a {
+    color: white;
+  }
+}
+
+section {
+  border-radius: 10px;
+  padding: 10px;
   position: relative;
 
-  a { color: white; }
-
-  .header-logos {
-    display: flex;
-    gap: 14px;
-    align-items: center;
-    margin-bottom: 8px;
-
-    img { height: 28px; }
-  }
-
-  .title {
-    font-size: 28px;
-    margin: 0;
-    line-height: 1.2;
-    letter-spacing: -0.3px;
-    color: white;
-    font-weight: 800;
-
-    .highlight {
-      color: $orange;
-      text-shadow: 0 1px 4px rgba(0,0,0,0.3);
-    }
-  }
-
-  .header-meta {
-    margin-top: 4px;
-  }
-
-  .authors {
-    font-size: 14px;
-    margin: 2px 0;
-    font-weight: 400;
-    color: rgba(255,255,255,0.95);
-  }
-
-  .affiliations {
-    font-size: 10px;
-    margin: 2px 0 0;
-    color: rgba(255,255,255,0.8);
-    font-style: italic;
-  }
-}
-
-// ═══════ Section Cards ═══════
-.card {
-  background: white;
-  border-radius: 8px;
-  padding: 12px 16px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-  overflow: hidden;
-
   h2 {
-    font-size: 16px;
-    margin: 0 0 8px;
-    color: $blue;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-weight: 700;
-    border-bottom: 2px solid $blue;
-    padding-bottom: 5px;
+    color: $theme-color-primary;
+    margin-block-start: 0.5em;
   }
 
   ul {
-    padding: 0;
-    margin: 0;
-    list-style: none;
+    padding-inline-start: 0;
+    margin-block-start: 0.25em;
+    list-style-type: none;
 
-    li {
-      margin-bottom: 6px;
-      line-height: 1.35;
-      display: flex;
-      align-items: flex-start;
-      gap: 2px;
-
-      &:last-child { margin-bottom: 0; }
+    li > ul {
+      padding-inline-start: 1em;
+      margin-block-start: 0.25em;
+      list-style-type: none;
     }
   }
 
-  code {
-    font-size: 0.82em;
-    background: rgba(0,0,0,0.06);
-    padding: 1px 4px;
-    border-radius: 3px;
+  a {
+    color: $theme-color-secondary;
+  }
+}
+
+.bg-light {
+  background-color: $theme-color-light;
+}
+
+.bg-dark {
+  background: linear-gradient(135deg, $theme-color-secondary 0%, $theme-color-primary 50%, #2874d8 100%);
+  color: white;
+}
+
+.bg-accent {
+  background-color: #fde8d5;
+}
+
+a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.title {
+  font-size: 35px;
+
+  .highlight {
+    color: $theme-color-accent;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  }
+}
+
+.authors {
+  font-size: 18px;
+}
+
+.affiliations {
+  font-size: 12px;
+  font-style: italic;
+}
+
+.text-secondary {
+  color: $theme-color-secondary;
+}
+
+.logo {
+  grid-row: 12;
+  margin: auto;
+
+  img {
+    margin-top: -10px;
+  }
+
+  a {
+    color: $theme-color-primary;
+    font-weight: 600;
+  }
+}
+
+.qr-code {
+  grid-row: 12;
+  margin: auto;
+  text-align: center;
+
+  p {
+    margin: 0 0 10px;
+  }
+
+  a {
+    color: $theme-color-primary;
     font-weight: 600;
   }
 
-  a { color: $blue; }
-}
-
-.card-accent h2 {
-  color: $orange;
-  border-bottom-color: $orange;
-}
-
-// ═══════ Section Number Badges ═══════
-.section-num {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 22px; height: 22px;
-  border-radius: 50%;
-  background: $blue;
-  color: white;
-  font-size: 12px;
-  font-weight: 700;
-  flex-shrink: 0;
-
-  &.accent {
-    background: $orange;
-  }
-}
-
-.section-num-light {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 22px; height: 22px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.25);
-  color: white;
-  font-size: 12px;
-  font-weight: 700;
-  flex-shrink: 0;
-}
-
-// ═══════ Filled Section Variants ═══════
-.card-filled-accent {
-  background: linear-gradient(135deg, $orange, #c45a18);
-  color: white;
-  box-shadow: 0 2px 8px rgba($orange, 0.3);
-
-  h2 {
-    color: white;
-    border-bottom-color: rgba(255,255,255,0.3);
-  }
-
-  code {
-    background: rgba(255,255,255,0.2);
-    color: white;
-  }
-}
-
-.card-filled-dark {
-  background: $blue;
-  color: white;
-  box-shadow: 0 2px 8px rgba($blue, 0.3);
-
-  h2 {
-    color: white;
-    border-bottom-color: rgba(255,255,255,0.3);
-  }
-}
-
-// ═══════ Figure Rows ═══════
-.fig-row {
-  display: flex;
-  gap: 14px;
-  align-items: stretch;
-}
-
-.fig-row-reverse {
-  flex-direction: row-reverse;
-}
-
-.fig-text {
-  flex: 0 0 44%;
-}
-
-.fig-image {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: white;
-  border-radius: 6px;
-  padding: 6px;
-  border: 1px solid $gray-border;
-
   img {
-    width: 100%;
-    max-height: 210px;
+    height: 55px;
+    margin-top: -10px;
   }
 }
 
-.card-wide .fig-image {
-  background: $gray-bg;
+small {
+  font-size: 12px;
+  color: $theme-color-muted;
 }
 
-// ═══════ List Icons ═══════
 .li-icon {
-  color: $orange;
-  margin-top: 2px;
-  font-size: 12px;
-  flex-shrink: 0;
-  width: 16px;
-  text-align: center;
+  margin-bottom: -1px;
+  color: $theme-color-accent;
 }
 
-.li-icon-light {
-  color: rgba(255,255,255,0.85);
-  margin-top: 2px;
-  font-size: 12px;
-  flex-shrink: 0;
-  width: 16px;
-  text-align: center;
-}
-
-// ═══════ Takeaway Banner ═══════
-.takeaway {
-  background: linear-gradient(90deg, $orange, #c45a18);
+.banner {
+  background: linear-gradient(90deg, $theme-color-accent, #c45a18);
   color: white;
-  padding: 10px 24px;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 600;
+  padding: 12px 30px;
+  font-size: 18px;
+  font-weight: 700;
   text-align: center;
   line-height: 1.4;
-  box-shadow: 0 2px 8px rgba($orange, 0.3);
 
   i {
-    margin-right: 6px;
+    margin-right: 8px;
     opacity: 0.8;
   }
 }
 
-// ═══════ Footer ═══════
-footer {
-  grid-column: 1 / 13;
-  grid-row: 12;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: white;
-  border-top: 3px solid $blue;
-  border-radius: 0 0 8px 8px;
-  padding: 6px 20px;
-  margin: 0 -20px;
-}
+.figure-container {
+  text-align: center;
 
-.footer-contact {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-
-  a {
-    font-size: 10px;
-    color: $blue;
-    font-weight: 600;
-    text-decoration: none;
-
-    i { margin-right: 4px; color: $orange; font-size: 9px; }
+  img {
+    width: 100%;
+    max-height: 100%;
   }
 }
 
-.footer-link {
-  text-align: right;
-
-  small {
-    display: block;
-    font-size: 9px;
-    color: $gray-text;
-  }
-
-  a {
-    font-size: 10px;
-    color: $blue;
-    font-weight: 600;
-    text-decoration: none;
-  }
+code {
+  font-size: 0.82em;
+  background: rgba(0,0,0,0.06);
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-weight: 600;
 }
 
-// ═══════ Links ═══════
-a {
-  text-decoration: none;
-  &:hover { text-decoration: underline; }
-}
-
-// ═══════ Print ═══════
 @media print {
   body {
     background: white;
     transform: none !important;
   }
-  #poster-wrapper { transform: none !important; }
-  #app { box-shadow: none; }
+
+  #poster-wrapper {
+    transform: none !important;
+  }
+
+  #app {
+    box-shadow: none;
+  }
 }
 
 @page {
