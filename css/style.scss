@@ -1,7 +1,7 @@
-$theme-color-primary: #0ead69;
-$theme-color-secondary: #0b7e4d;
-$theme-color-accent: #7bd2ad;
-$theme-color-light: #f0fdf4;
+$theme-color-primary: #1e64c8;
+$theme-color-secondary: #0d3b7a;
+$theme-color-accent: #e26c22;
+$theme-color-light: #eef4fc;
 $theme-color-muted: #6b7280;
 $theme-font-family: Candara, sans-serif;
 
@@ -22,125 +22,238 @@ body {
   top: 0;
   left: 0;
   margin: 0;
-  padding: 0;
   overflow: hidden;
   box-sizing: border-box;
+  width: 100%;
+  height: 100%;
   aspect-ratio: 841 / 1189;
   background: white;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(12, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(24, minmax(0, 1fr));
+  grid-template-rows: repeat(32, minmax(0, 1fr));
+  --padding: 0.4cm;
+  padding: var(--padding);
   font-family: $theme-font-family;
   font-size: 15px;
-}
-
-header {
-  width: 100%;
-
-  a {
-    color: white;
-  }
-}
-
-section {
-  border-radius: 10px;
-  padding: 10px;
-  position: relative;
-
-  h2 {
-    color: $theme-color-primary;
-    margin-block-start: 0.5em;
-  }
-
-  ul {
-    padding-inline-start: 0;
-    margin-block-start: 0.25em;
-    list-style-type: none;
-
-    li > ul {
-      padding-inline-start: 1em;
-      margin-block-start: 0.25em;
-      list-style-type: none;
-    }
-  }
-
-  a {
-    color: $theme-color-secondary;
-  }
-}
-
-.bg-light {
-  background-color: $theme-color-light;
-}
-
-.bg-dark {
-  background-color: $theme-color-primary;
-  color: white;
-}
-
-.bg-accent {
-  background-color: $theme-color-accent;
+  gap: 4px;
+  -webkit-print-color-adjust: exact;
+  text-rendering: geometricprecision;
 }
 
 a {
   text-decoration: none;
+  color: $theme-color-secondary;
 
   &:hover {
     text-decoration: underline;
   }
 }
 
-.title {
-  font-size: 35px;
-}
-
-.authors {
-  font-size: 18px;
-}
-
-.affiliations {
-  font-size: 12px;
-  font-style: italic;
-}
-
-.text-secondary {
-  color: $theme-color-secondary;
-}
-
-.logo {
-  grid-row: 12;
-  margin: auto;
-
-  img {
-    margin-top: -10px;
-  }
-}
-
-.qr-code {
-  grid-row: 12;
-  margin: auto;
+// ─── Title (single line, no authors) ────────────────
+.mtitle {
+  grid-column: 1 / -1;
+  grid-row: 1 / span 3;
+  background: linear-gradient(135deg, $theme-color-secondary 0%, $theme-color-primary 50%, #2874d8 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: bold;
   text-align: center;
+  border-radius: 6px;
+  padding: 0 20px;
 
-  p {
-    margin: 0 0 10px;
-  }
-
-  img {
-    height: 55px;
-    margin-top: -10px;
+  .highlight {
+    color: $theme-color-accent;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.3);
   }
 }
 
-small {
-  font-size: 12px;
-  color: $theme-color-muted;
+// ─── Key Features (top left, no panel title) ────────
+.section-features {
+  grid-column: 1 / span 12;
+  grid-row: 4 / span 7;
+  padding: 8px 12px;
+  align-content: center;
+}
+
+// ─── Agents Figure (top right, no panel title) ──────
+.section-figure-agents {
+  grid-column: 13 / -1;
+  grid-row: 4 / span 7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+
+  img {
+    width: 100%;
+    max-height: 100%;
+  }
+}
+
+// ─── Banner (centered in box) ───────────────────────
+.banner {
+  grid-column: 1 / -1;
+  grid-row: 11 / span 2;
+  background: linear-gradient(90deg, $theme-color-accent, #c45a18);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  border-radius: 6px;
+  gap: 0.3em;
+}
+
+// ─── RDF Model (middle left, no panel title) ────────
+.section-model {
+  grid-column: 1 / span 12;
+  grid-row: 13 / span 8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+
+  img {
+    width: 100%;
+    max-height: 100%;
+  }
+}
+
+// ─── Properties (middle right, no panel title) ──────
+.section-properties {
+  grid-column: 13 / -1;
+  grid-row: 13 / span 8;
+  padding: 8px 12px;
+  align-content: center;
+}
+
+// ─── Bottom three columns ───────────────────────────
+.section-design {
+  grid-column: 1 / span 8;
+  grid-row: 21 / span 8;
+  background: $theme-color-light;
+  border-radius: 6px;
+  padding: 10px;
+  align-content: center;
+}
+
+.section-architecture {
+  grid-column: 9 / span 8;
+  grid-row: 21 / span 8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+
+  img {
+    height: 100%;
+    max-width: 100%;
+  }
+}
+
+.section-conclusion {
+  grid-column: 17 / -1;
+  grid-row: 21 / span 8;
+  background: $theme-color-light;
+  border-radius: 6px;
+  padding: 10px;
+  align-content: center;
+
+  h3 {
+    color: $theme-color-primary;
+    margin: 0 0 0.5em;
+    font-size: 14px;
+  }
+}
+
+// ─── Footer (matching sgf-demo-poster style) ────────
+.mfooter {
+  grid-column: 1 / -1;
+  grid-row: 29 / -1;
+  background: $theme-color-primary;
+  color: white;
+  padding: 0 1em;
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+  font-size: 11px;
+
+  a {
+    color: white;
+    text-decoration: none;
+    border: none;
+  }
+}
+
+.footer-emails {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+}
+
+.footer-label {
+  margin-left: 2em;
+}
+
+.footer-qr {
+  height: 80%;
+  margin: 0 0 0 0.5em;
+  padding: 0;
+
+  img {
+    margin: 0;
+    height: 100%;
+  }
+}
+
+.footer-logo-first {
+  margin-left: auto !important;
+}
+
+.footer-logo {
+  margin: 0 0.5em;
+  height: 50%;
+}
+
+// ─── Shared list styling ────────────────────────────
+ul {
+  padding-inline-start: 0;
+  margin: 0;
+  list-style-type: none;
+
+  li {
+    margin-bottom: 0.6em;
+    line-height: 1.4;
+  }
+
+  li > ul {
+    padding-inline-start: 1.2em;
+    margin-top: 0.3em;
+    list-style-type: none;
+  }
 }
 
 .li-icon {
-  margin-bottom: -1px;
-  color: $theme-color-primary;
+  margin-right: 4px;
+  color: $theme-color-accent;
+}
+
+.li-icon-flip {
+  transform: scaleY(-1);
+}
+
+code {
+  font-size: 0.82em;
+  background: rgba(0,0,0,0.06);
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-weight: 600;
 }
 
 @media print {
@@ -159,11 +272,6 @@ small {
 }
 
 @page {
-  size: 841px 1189px; /* A0 dimensions in millimeters */
+  size: 841px 1189px;
   margin: 0;
-}
-
-#app {
-  -webkit-print-color-adjust: exact;
-  text-rendering: geometricprecision;
 }

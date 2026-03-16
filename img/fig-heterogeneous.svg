@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 220">
+  <defs>
+    <marker id="arr-blue" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#1e64c8"/>
+    </marker>
+    <marker id="arr-orange" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#e26c22"/>
+    </marker>
+  </defs>
+
+  <!-- Alice Data | LDP -->
+  <rect x="10" y="10" width="145" height="50" rx="8" fill="#eef4fc" stroke="#1e64c8" stroke-width="1.5"/>
+  <line x1="82" y1="10" x2="82" y2="60" stroke="#1e64c8" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="46" y="32" text-anchor="middle" font-family="Candara, sans-serif" font-size="11" fill="#1e64c8" font-weight="bold">Alice Data</text>
+  <text x="46" y="50" text-anchor="middle" font-family="Candara, sans-serif" font-size="8" fill="#555">(RDF Store)</text>
+  <text x="118" y="38" text-anchor="middle" font-family="Candara, sans-serif" font-size="12" fill="#1e64c8" font-weight="bold">LDP</text>
+
+  <!-- Bob Data | TPF -->
+  <rect x="185" y="10" width="145" height="50" rx="8" fill="#fff3e0" stroke="#e26c22" stroke-width="1.5"/>
+  <line x1="257" y1="10" x2="257" y2="60" stroke="#e26c22" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="221" y="32" text-anchor="middle" font-family="Candara, sans-serif" font-size="11" fill="#e26c22" font-weight="bold">Bob Data</text>
+  <text x="221" y="50" text-anchor="middle" font-family="Candara, sans-serif" font-size="8" fill="#555">(RDF Store)</text>
+  <text x="293" y="38" text-anchor="middle" font-family="Candara, sans-serif" font-size="12" fill="#e26c22" font-weight="bold">TPF</text>
+
+  <!-- Agent A -->
+  <rect x="30" y="130" width="120" height="45" rx="8" fill="white" stroke="#1e64c8" stroke-width="1.5"/>
+  <text x="90" y="148" text-anchor="middle" font-family="Candara, sans-serif" font-size="10" fill="#1e64c8" font-weight="bold">Agent A</text>
+  <text x="90" y="164" text-anchor="middle" font-family="Candara, sans-serif" font-size="8" fill="#555">CRDT-aware client</text>
+
+  <!-- Agent B -->
+  <rect x="195" y="130" width="120" height="45" rx="8" fill="white" stroke="#e26c22" stroke-width="1.5"/>
+  <text x="255" y="148" text-anchor="middle" font-family="Candara, sans-serif" font-size="10" fill="#e26c22" font-weight="bold">Agent B</text>
+  <text x="255" y="164" text-anchor="middle" font-family="Candara, sans-serif" font-size="8" fill="#555">Standard client</text>
+
+  <!-- Agent A → Alice Data -->
+  <line x1="70" y1="130" x2="55" y2="62" stroke="#1e64c8" stroke-width="1.3" marker-end="url(#arr-blue)"/>
+
+  <!-- Agent A → Bob Data -->
+  <line x1="120" y1="130" x2="230" y2="62" stroke="#1e64c8" stroke-width="1.3" marker-end="url(#arr-blue)"/>
+
+  <!-- Agent B → Bob Data -->
+  <line x1="255" y1="130" x2="255" y2="62" stroke="#e26c22" stroke-width="1.3" marker-end="url(#arr-orange)"/>
+
+  <!-- Labels on connections -->
+  <text x="40" y="98" font-family="Candara, sans-serif" font-size="7" fill="#1e64c8">read/write</text>
+  <text x="150" y="90" font-family="Candara, sans-serif" font-size="7" fill="#1e64c8">sync</text>
+  <text x="262" y="98" font-family="Candara, sans-serif" font-size="7" fill="#e26c22">read/write</text>
+
+  <!-- Note -->
+  <text x="170" y="200" text-anchor="middle" font-family="Candara, sans-serif" font-size="8" fill="#555" font-style="italic">Heterogeneous interfaces: same data, different protocols</text>
+  <text x="170" y="215" text-anchor="middle" font-family="Candara, sans-serif" font-size="8" fill="#555" font-style="italic">CRDT-aware &amp; unaware clients coexist transparently</text>
+</svg>
