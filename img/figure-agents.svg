@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 200" font-family="Candara, sans-serif">
+  <!-- Alice's Data (LDP) -->
+  <rect x="10" y="10" width="130" height="50" rx="8" fill="#1e64c8"/>
+  <text x="75" y="30" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Alice's Data</text>
+  <rect x="35" y="40" width="80" height="16" rx="4" fill="white" opacity="0.9"/>
+  <text x="75" y="52" text-anchor="middle" fill="#1e64c8" font-size="10" font-weight="bold">LDP</text>
+
+  <!-- Bob's Data (TPF) -->
+  <rect x="200" y="10" width="130" height="50" rx="8" fill="#e26c22"/>
+  <text x="265" y="30" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Bob's Data</text>
+  <rect x="225" y="40" width="80" height="16" rx="4" fill="white" opacity="0.9"/>
+  <text x="265" y="52" text-anchor="middle" fill="#e26c22" font-size="10" font-weight="bold">TPF</text>
+
+  <!-- Agent A (person icon using shapes) -->
+  <circle cx="110" cy="122" r="8" fill="#1e64c8"/>
+  <path d="M96,148 Q96,134 110,134 Q124,134 124,148" fill="#1e64c8"/>
+  <text x="110" y="162" text-anchor="middle" fill="#1e64c8" font-size="10" font-weight="bold">Agent A</text>
+
+  <!-- Agent B (person icon using shapes) -->
+  <circle cx="265" cy="122" r="8" fill="#e26c22"/>
+  <path d="M251,148 Q251,134 265,134 Q279,134 279,148" fill="#e26c22"/>
+  <text x="265" y="162" text-anchor="middle" fill="#e26c22" font-size="10" font-weight="bold">Agent B</text>
+
+  <!-- Agent A → Alice's Data (solid line) -->
+  <line x1="100" y1="114" x2="80" y2="65" stroke="#1e64c8" stroke-width="1.8"/>
+  <polygon points="76,67 80,58 84,67" fill="#1e64c8"/>
+
+  <!-- Agent A → Bob's Data (dashed line) -->
+  <line x1="125" y1="118" x2="245" y2="65" stroke="#1e64c8" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <polygon points="241,67 248,58 249,69" fill="#1e64c8"/>
+
+  <!-- Agent B → Bob's Data (solid line) -->
+  <line x1="265" y1="114" x2="265" y2="65" stroke="#e26c22" stroke-width="1.8"/>
+  <polygon points="261,67 265,58 269,67" fill="#e26c22"/>
+
+  <!-- Labels -->
+  <text x="170" y="190" text-anchor="middle" fill="#6b7280" font-size="10" font-style="italic">Heterogeneous interfaces, shared data</text>
+</svg>

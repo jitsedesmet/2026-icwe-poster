@@ -30,7 +30,7 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(12, 1fr);
+  grid-template-rows: auto repeat(10, 1fr) auto;
   gap: 8px;
   font-family: $theme-font-family;
   font-size: 14px;
@@ -49,7 +49,7 @@ header {
 
   .header-content {
     flex: 1;
-    padding: 15px 20px;
+    padding: 12px 20px;
   }
 
   .header-logos {
@@ -75,9 +75,15 @@ section {
   h2 {
     color: $theme-color-primary;
     margin: 0 0 6px 0;
-    font-size: 16px;
+    font-size: 15px;
     padding-bottom: 4px;
     border-bottom: 2px solid $theme-color-primary;
+  }
+
+  h3 {
+    color: $theme-color-accent;
+    margin: 6px 0 4px 0;
+    font-size: 13px;
   }
 
   &.accent-heading h2 {
@@ -111,6 +117,32 @@ section {
   }
 }
 
+// Numbered list for key properties enumeration
+.numbered-list {
+  margin: 0;
+  padding-inline-start: 0;
+  counter-reset: item;
+  list-style-type: none;
+
+  li {
+    counter-increment: item;
+    margin-bottom: 8px;
+    padding-left: 28px;
+    position: relative;
+    font-size: 13.5px;
+    line-height: 1.4;
+
+    &::before {
+      content: counter(item) ".";
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+      color: $theme-color-primary;
+      font-size: 15px;
+    }
+  }
+}
+
 .dash {
   color: $theme-color-accent;
   font-weight: bold;
@@ -119,24 +151,43 @@ section {
   &.primary-dash {
     color: $theme-color-primary;
   }
+
+  &.plus {
+    color: #2d8a4e;
+    font-weight: bold;
+  }
+
+  &.minus {
+    color: $theme-color-accent;
+  }
 }
 
-.section-number {
-  display: inline-flex;
+.ntp-detail {
+  margin-top: 6px;
+  font-size: 12.5px;
+  padding: 6px 8px;
+  background: $theme-color-light;
+  border-left: 3px solid $theme-color-accent;
+  border-radius: 0 4px 4px 0;
+}
+
+// Banner
+.banner {
+  display: flex;
   align-items: center;
   justify-content: center;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: $theme-color-primary;
-  color: white;
-  font-size: 12px;
-  font-weight: bold;
-  margin-right: 6px;
-  vertical-align: middle;
+  border-radius: 8px;
+  margin: 0 8px;
+  padding: 8px 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 
-  &.accent {
-    background: $theme-color-accent;
+  h2 {
+    color: white;
+    font-size: 20px;
+    margin: 0;
+    text-align: center;
+    border-bottom: none;
+    letter-spacing: 0.5px;
   }
 }
 
@@ -186,7 +237,7 @@ a {
 }
 
 .title {
-  font-size: 28px;
+  font-size: 26px;
   margin: 0 0 4px 0;
   line-height: 1.15;
 }
@@ -248,28 +299,23 @@ figure {
   }
 }
 
-.logo {
-  grid-row: 12;
-  margin: auto;
-
-  img {
-    margin-top: -10px;
-  }
-}
-
-.qr-code {
-  grid-row: 12;
-  margin: auto;
+.diagram-figure {
+  margin: 0;
+  padding: 6px;
+  background: white;
+  border: none;
   text-align: center;
 
-  p {
-    margin: 0 0 5px;
-    font-size: 9px;
+  img {
+    max-width: 100%;
+    height: auto;
+    max-height: 160px;
   }
 
-  img {
-    height: 50px;
-    margin-top: -5px;
+  figcaption {
+    text-align: left;
+    margin-top: 4px;
+    font-size: 10.5px;
   }
 }
 
@@ -278,12 +324,47 @@ figure {
   grid-row: 12;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   background: white;
   border-radius: 8px;
-  padding: 4px 15px;
+  padding: 6px 15px;
   margin: 0 8px 6px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  font-size: 11px;
+
+  .footer-emails {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+    a {
+      color: $theme-color-muted;
+      font-size: 11px;
+
+      i {
+        color: $theme-color-primary;
+        margin-right: 3px;
+      }
+    }
+  }
+
+  .footer-links {
+    a {
+      color: $theme-color-muted;
+      font-size: 11px;
+
+      i {
+        color: $theme-color-accent;
+        margin-right: 3px;
+      }
+    }
+  }
+
+  .footer-logos {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
 }
 
 small {
