@@ -3,6 +3,7 @@ $theme-color-secondary: #1e64c8;
 $theme-color-accent: #e26c22;
 $theme-color-light: #f5f7fa;
 $theme-color-muted: #6b7280;
+$theme-color-success: #2d8a4e;
 $theme-font-family: Candara, sans-serif;
 
 body {
@@ -153,7 +154,7 @@ section {
   }
 
   &.plus {
-    color: #2d8a4e;
+    color: $theme-color-success;
     font-weight: bold;
   }
 

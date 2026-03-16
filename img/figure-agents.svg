@@ -26,8 +26,8 @@
   <polygon points="76,67 80,58 84,67" fill="#1e64c8"/>
 
   <!-- Agent A → Bob's Data (dashed line) -->
-  <line x1="125" y1="118" x2="245" y2="65" stroke="#1e64c8" stroke-width="1.5" stroke-dasharray="5,3"/>
-  <polygon points="241,67 248,58 249,69" fill="#1e64c8"/>
+  <line x1="125" y1="118" x2="248" y2="65" stroke="#1e64c8" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <polygon points="244,67 248,58 252,67" fill="#1e64c8"/>
 
   <!-- Agent B → Bob's Data (solid line) -->
   <line x1="265" y1="114" x2="265" y2="65" stroke="#e26c22" stroke-width="1.8"/>
