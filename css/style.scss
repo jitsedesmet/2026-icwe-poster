@@ -12,11 +12,10 @@ body {
   --rq-color: #d9d2e9;
   --color-key: #486081;
   --slide-background: #f6fdf5;
-  --color-prim: #1a4e66;
-  --color-prim-light: #dae8fc;
-  --color-sec: #e26c22;
+  --color-prim: #005eae;
+  --color-prim-light: #d4e5f5;
+  --color-sec: #fbba64;
   --color-ter: white;
-  --color-href: var(--color-sec);
   --size-huge: 1.8rem;
   --size-big: 1.7rem;
   --size-small: 1rem;
@@ -29,7 +28,6 @@ body {
   top: 0;
   left: 0;
   margin: 0;
-  padding: 0;
   overflow: hidden;
   box-sizing: border-box;
   aspect-ratio: 841 / 1189;
@@ -40,7 +38,7 @@ body {
   grid-template-columns: repeat(24, minmax(0, 1fr));
   font-family: var(--font-family), sans-serif;
   font-size: var(--size-norm);
-  color: black;
+  color: var(--color-prim);
 
   -webkit-print-color-adjust: exact;
   text-rendering: geometricprecision;
@@ -49,6 +47,7 @@ body {
     align-content: center;
     justify-content: center;
   }
+  padding: 0.2cm;
 }
 
 header {
@@ -88,7 +87,7 @@ li::marker {
   text-align: center;
   font-size: var(--size-big);
   background: var(--color-prim-light);
-  color: black;
+  font-weight: bold;
   border-radius: 0.25em;
 }
 
@@ -119,7 +118,6 @@ li::marker {
 #vision-change {
   grid-column: 1 / -1;
   grid-row: -5 / -3;
-  color: black;
   font-size: var(--size-big);
   text-align: center;
   background: var(--color-prim-light);
