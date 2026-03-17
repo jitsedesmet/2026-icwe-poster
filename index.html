@@ -23,17 +23,36 @@
             </ul>
         </div>
 
+        <img id="system-img" src="/img/crdt-system.svg"
+             alt="Representation"
+        />
+
         <div id="main-body">
             Conflict free RDF replication using Web standards
         </div>
 
+        <div id="rdf-representation">
+&lt;&gt; a crdt:container . <br>
+[] crdt:tags &lt;&lt;( &lt;&gt; a crdt:container )&gt;&gt; ; <br>
+            <span style="color: green">crdt:add "be2f95dd-..."^^crdt:uuid .</span> <br>
+<span style="color: blue">:me a :human .</span> <br>
+[] crdt:tags &lt;&lt;( :me a :human )&gt;&gt; ; <br>
+            <span style="color: green">crdt:add "be2f95dd-..."^^crdt:uuid .</span> <br>
+            <span style="color: red">crdt:remove "be2f95dd-..."^^crdt:uuid .</span> <br>
+<span style="color: gray">[] crdt:tags &lt;&lt;( :me a :man )&gt;&gt; ;</span> <br>
+            <span style="color: red">crdt:remove "216ac011-...--2025-03-13T14:00:00Z"^^crdt:stamp-uuid .</span>
+        </div>
+
         <div id="description">
-            <div style="margin-bottom: 0.3em">Description contains:</div>
             <ul style="list-style: '🗎 ';">
-                <li>Resource Description</li>
-                <li>Group Strategy</li>
-                <li>Store Condition</li>
-                <li>Update Condition</li>
+                <li>RDF 1.2 native reification</li>
+                <li>NTP-bound optimize
+                    <ul>
+                        <li>Drop old & redundant tags</li>
+                        <li>Drop old tombstones</li>
+                    </ul>
+                </li>
+                <li>NTP max pairwise 2000s drift</li>
             </ul>
         </div>
 
