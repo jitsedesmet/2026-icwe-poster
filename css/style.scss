@@ -50,6 +50,22 @@ body {
   padding: 0.2cm;
 }
 
+li::marker {
+  font-family: 'Noto Emoji', sans-serif;
+}
+
+a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// =====================================================================================================================
+// ======================================= POSTER COMPONENTS ===========================================================
+// =====================================================================================================================
+
 header {
   grid-column: 1 / -1;
   grid-row: 1 / span 4;
@@ -61,24 +77,15 @@ header {
   color: var(--color-ter);
 }
 
-footer {
-  grid-column: 1 / -1;
-  grid-row: -3 / -1;
-  font-size: var(--size-small);
-  background: var(--color-prim);
-  color: var(--color-ter);
-  padding: 0 1em;
-  display: flex;
-  align-items: center;
-  a {
-    color: var(--color-ter);
-    text-decoration: none;
-    border: none;
+#requirements {
+  grid-column: 1 / span 12;
+  grid-row: 5 / span 8;
+  li {
+    margin-bottom: 0.5em;
   }
-}
-
-li::marker {
-  font-family: 'Noto Emoji', sans-serif;
+  li::marker {
+    color: red;
+  }
 }
 
 #main-body {
@@ -115,37 +122,28 @@ li::marker {
   }
 }
 
-#vision-change {
+footer {
   grid-column: 1 / -1;
-  grid-row: -5 / -3;
-  font-size: var(--size-big);
-  text-align: center;
-  background: var(--color-prim-light);
-  border-radius:  2rem 2rem 0 0;
-}
-
-#negative {
-  grid-column: 12 / -1;
-  grid-row: 5 / span 8;
-  li {
-    margin-bottom: 0.5em;
+  grid-row: -3 / -1;
+  font-size: var(--size-small);
+  background: var(--color-prim);
+  color: var(--color-ter);
+  padding: 0 1em;
+  display: flex;
+  align-items: center;
+  a {
+    color: var(--color-ter);
+    text-decoration: none;
+    border: none;
   }
-  li::marker {
-    color: red;
-  }
-}
-
-a {
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
+  .logo {
+    margin: 0 1em 0 1em;
   }
 }
 
-.logo {
-  margin: 0 1em 0 1em;
-}
+// =====================================================================================================================
+// ======================================= END POSTER COMPONENTS =======================================================
+// =====================================================================================================================
 
 @media print {
   body {
