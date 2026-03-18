@@ -21,6 +21,11 @@ body {
   --size-small: 1rem;
   --size-extra-small: 0.8rem;
   --size-norm: 1.5rem;
+
+  --deep-red: hsl(0, 100%, 50%);
+  --light-red: hsl(0, 100%, 90%);
+  --deep-green: hsl(140, 100%, 30%);
+  --light-green: hsl(160, 100%, 90%);
 }
 
 #app {
@@ -143,24 +148,24 @@ header {
   }
 
   #rdf-explain-1, #rdf-explain-2 {
-    border: 1px solid;
+    border: 0.15rem solid;
     border-radius: 1rem;
     padding: 0.5rem;
     text-align: center;
   }
   #rdf-explain-1 {
-    border-color: green;
-    background-color: lightgreen;
+    border-color: var(--deep-green);
+    background-color: var(--light-green);
     .title {
-      color: green;
+      color: var(--deep-green);
       font-weight: bold;
     }
   }
   #rdf-explain-2 {
-    border-color: red;
-    background-color: lightpink;
+    border-color: var(--deep-red);
+    background-color: var(--light-red);
     .title {
-      color: red;
+      color: var(--deep-red);
       font-weight: bold;
     };
   }
