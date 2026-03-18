@@ -5,9 +5,10 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&family=Noto+Emoji:wght@300..700&display=swap');
     </style>
-    <link rel="icon" type="image/svg+xml" href="/img/logos/logo-ugent.svg"/>
+    <link rel="icon" type="image/svg+xml" href="/img/logos/favicon.png"/>
+    <link rel="icon" type="image/svg+xml" href="/img/logos/favicon.svg"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>My Awesome Poster</title>
+    <title>A State-Based Add-Wins CRDT for RDF Datastores</title>
 </head>
 <body prefix="rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns# foaf: http://xmlns.com/foaf/0.1/ owl: http://www.w3.org/2002/07/owl# xsd: http://www.w3.org/2001/XMLSchema# org: http://www.w3.org/ns/org# schema: http://schema.org/ cite: http://purl.org/spar/cito/"
       typeof="schema:Poster">
@@ -21,7 +22,6 @@
             <ul style="list-style: '📝 ';">
                 <li>Heterogeneous interfaces supported by minimizing requirements</li>
                 <li>Interact with shared Knowledge Graphs and decentralized data ecosystems through SPARQL</li>
-                <li>Atomicity through self confinement</li>
                 <li>Serving CRDT aware and non-aware clients</li>
             </ul>
         </div>
@@ -50,7 +50,7 @@
             <div id="rdf-explain-1">
                 <span class="title"><span class="icon">✔</span> <span>:me a :human</span> — present</span><br>
                 Has add-tag not in tombstone set<br>
-                <span class="icon">↳</span> add-wins over concurrent remove
+                <span class="icon">↳</span> <span style="font-weight: bold">add-wins</span> over concurrent remove
             </div>
             <div id="rdf-explain-2">
                 <span class="title"><span class="icon">❌</span> <span>:me a :man</span> — absent</span><br>
@@ -78,7 +78,7 @@
             <ul style="list-style: '+ ';">
                 <li>RESTful state based interactions</li>
                 <li>ETAG preventing mid flight collision</li>
-
+                <li>Atomicity through self confinement</li>
             </ul>
         </div>
 

@@ -103,6 +103,9 @@ header {
 #requirements {
   grid-column: 1 / span 12;
   grid-row: 5 / span 8;
+  ul {
+    margin: 0;
+  }
   li {
     margin-bottom: 0.1em;
     margin-left: 1.3em;
@@ -237,7 +240,7 @@ header {
 }
 
 #stack-img {
-  grid-column: calc(24/3) / span calc(24/3);
+  grid-column: 9 / span 8;
   grid-row: 23 / -3;
   object-fit: contain;
   width: 100%;
