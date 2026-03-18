@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36" version="29.6.3" pages="2">
   <diagram name="system" id="kdAnOj4OEaWYWBVaZ-iR">
-    <mxGraphModel dx="492" dy="284" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="984" dy="549" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -70,14 +70,23 @@
         <mxCell id="hNUEq7NSnT7WQY_qm2Or-17" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Agent A" vertex="1">
           <mxGeometry height="30" width="120" x="320" y="400" as="geometry" />
         </mxCell>
+        <mxCell id="X7_fVM0AWBQxLgHJJEiA-1" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Edits Offline" vertex="1">
+          <mxGeometry height="30" width="80" x="375" y="341" as="geometry" />
+        </mxCell>
+        <mxCell id="X7_fVM0AWBQxLgHJJEiA-3" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Edits Offline" vertex="1">
+          <mxGeometry height="30" width="80" x="463" y="341" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
   <diagram id="5NyzYuZj6g5wDTznp-Wh" name="stack">
-    <mxGraphModel dx="475" dy="275" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="826" dy="461" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="dMZSc_VI8C6Ef1ABDQzT-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;" value="" vertex="1">
+          <mxGeometry height="240" width="200" x="280" y="150" as="geometry" />
+        </mxCell>
         <mxCell id="lHAyzrJ7RvDAQ8K0999x-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=5;strokeColor=#005EAE;fillColor=none;" value="" vertex="1">
           <mxGeometry height="40" width="120" x="320" y="160" as="geometry" />
         </mxCell>
@@ -145,7 +154,7 @@
           <mxGeometry height="20" width="70" x="407" y="200" as="geometry" />
         </mxCell>
         <mxCell id="p01ht3r38H_lQcRZzrAX-18" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;GET+ETag&lt;/font&gt;" vertex="1">
-          <mxGeometry height="20" width="60" x="294" y="200" as="geometry" />
+          <mxGeometry height="20" width="60" x="290" y="200" as="geometry" />
         </mxCell>
         <mxCell id="p01ht3r38H_lQcRZzrAX-19" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 7px; color: rgb(153, 153, 153);&quot;&gt;Application / User&lt;/font&gt;" vertex="1">
           <mxGeometry height="20" width="120" x="320" y="360" as="geometry" />

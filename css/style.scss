@@ -186,7 +186,7 @@ header {
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 
   .title {
     font-weight: bold;
@@ -244,8 +244,8 @@ header {
   grid-row: 23 / -3;
   object-fit: contain;
   width: 100%;
-  margin: 0.5rem 0;
-  height: calc(100% - 1rem);
+  margin: 0 auto;
+  height: calc(100% - 0.1rem);
 
   //background: #d4e5f5;
 }
@@ -258,7 +258,7 @@ header {
   flex-direction: column;
   justify-content: flex-end;
   margin-bottom: 1rem;
-  text-align: center;
+  text-align: right;
 
   .title {
     font-weight: bold;
