@@ -51,6 +51,10 @@ body {
   padding: 0.2cm;
 }
 
+ul {
+  padding: 0;
+}
+
 li::marker {
   font-family: 'Noto Emoji', sans-serif;
 }
@@ -82,7 +86,8 @@ header {
   grid-column: 1 / span 12;
   grid-row: 5 / span 8;
   li {
-    margin-bottom: 0.5em;
+    margin-bottom: 0.1em;
+    margin-left: 1.3em;
   }
   li::marker {
     color: red;
@@ -114,7 +119,6 @@ header {
   grid-column: 1 / 14;
   grid-row: 15 / span 6;
   color: black;
-  font-family: monospace;
   font-size: var(--size-small);
 
   background: beige;
@@ -126,7 +130,7 @@ header {
   align-items: center;
   justify-content: center;
   //margin-top: 2em;
-  li, #description li::marker {
+  li {
     margin-bottom: 0.1em;
     margin-left: 1.3em;
   }
@@ -134,15 +138,14 @@ header {
   background: gray;
 }
 
-#future-work {
+#advantages {
   grid-column: 1 / span calc(24/3);
   grid-row: 24 / span 5;
   display: flex;
   flex-direction: column;
   justify-items: flex-end;
-  li, #future-work li::marker {
+  li, #advantages li::marker {
     margin-bottom: 0.1em;
-    margin-left: 1.5em;
   }
 }
 
@@ -154,6 +157,17 @@ header {
   width: 100%;
   height: calc(100% - 1rem);
   background: #d4e5f5;
+}
+
+#future-work {
+  grid-column: calc(24/3 * 2) / -1;
+  grid-row: 24 / span 5;
+  display: flex;
+  flex-direction: column;
+  justify-items: flex-end;
+  li, #future-work li::marker {
+    margin-bottom: 0.1em;
+  }
 }
 
 footer {

@@ -15,7 +15,7 @@
         </header>
 
         <div id="requirements">
-            <ul style="list-style: '— '; margin: 0">
+            <ul style="list-style: '— ';">
                 <li>Heterogeneous interfaces supported by minimizing requirements</li>
                 <li>Interact with shared Knowledge Graphs and decentralized data ecosystems through SPARQL</li>
                 <li>Atomicity through self confinement</li>
@@ -33,16 +33,16 @@
             Conflict free RDF replication using Web standards
         </div>
 
-        <div id="rdf-representation">
-&lt;&gt; a crdt:container . <br>
-[] crdt:tags &lt;&lt;( &lt;&gt; a crdt:container )&gt;&gt; ; <br>
-            <span style="color: green">crdt:add "be2f95dd-..."^^crdt:uuid .</span> <br>
-<span style="color: blue">:me a :human .</span> <br>
-[] crdt:tags &lt;&lt;( :me a :human )&gt;&gt; ; <br>
-            <span style="color: green">crdt:add "be2f95dd-..."^^crdt:uuid .</span> <br>
-            <span style="color: red">crdt:remove "be2f95dd-..."^^crdt:uuid .</span> <br>
-<span style="color: gray">[] crdt:tags &lt;&lt;( :me a :man )&gt;&gt; ;</span> <br>
-            <span style="color: red">crdt:remove "216ac011-...--2025-03-13T14:00:00Z"^^crdt:stamp-uuid .</span>
+        <div id="rdf-representation"><pre><code>&lt;&gt; a crdt:container .
+[] crdt:tags &lt;&lt;( &lt;&gt; a crdt:container )&gt;&gt; ;
+   <span style="color: green">crdt:add "be2f95dd-..."^^crdt:uuid .</span>
+<span style="color: blue">:me a :human .</span>
+[] crdt:tags &lt;&lt;( :me a :human )&gt;&gt; ;
+   <span style="color: green">crdt:add "be2f95dd-..."^^crdt:uuid .</span>
+   <span style="color: red">crdt:remove "be2f95dd-..."^^crdt:uuid .</span>
+<span style="color: gray">[] crdt:tags &lt;&lt;( :me a :man )&gt;&gt; ;</span>
+   <span style="color: red">crdt:remove
+"216ac011-...--2025-03-13T14:00:00Z"^^crdt:stamp-uuid .</span></code></pre>
         </div>
 
         <div id="description">
@@ -58,11 +58,11 @@
             </ul>
         </div>
 
-        <div id="future-work">
-            <div style="margin-bottom: 0.3em">Future work:</div>
-            <ul style="list-style: '🔭';">
-                <li>Fundamental data interface description</li>
-                <li>Server awareness/ enforcement</li>
+        <div id="advantages">
+            <ul style="list-style: '';">
+                <li>Add Wins</li>
+                <li>RESTful state based interactions</li>
+                <li>ETAG preventing mid flight collision</li>
             </ul>
         </div>
 
@@ -72,6 +72,14 @@
              The first agents communicates with both datastores while the second agent communicates only with the second datastore."
         />
 
+        <div id="future-work">
+            Conclusion & Future Work
+            <ul style="list-style: '';">
+                <li>npm PoC implementation: <span style="color: var(--color-sec)">orset-rdf-store</span></li>
+                <li>Abstracted to RDFjs Store interface</li>
+                <li>Need for Constraint Aware Merge</li>
+            </ul>
+        </div>
 
         <footer>
             <div style="display: flex; flex-direction: column; gap: 0.5em;">
@@ -79,7 +87,10 @@
                 <a href="mailto:Ruben.Taelman@ugent.be">Ruben.Taelman@ugent.be</a>
             </div>
 
-            <span style="margin: 0 0 0 auto">Paper</span>
+            <div style="margin: 0 0 0 auto; display: flex; flex-direction: column; gap: 0.1em; align-items: center;">
+                <div>Paper:</div>
+                <div style="font-size: 0.8em; text-align: center">2026-icwe-poster.<br>jitsedesmet.be</div>
+            </div>
             <a style="height: 80%; margin: 0 0 0 0.5em; padding: 0;"
                href="https://2026-icwe-poster.jitsedesmet.be/">
                 <img style="margin: 0" height="100%" src="img/qr-paper.svg">
