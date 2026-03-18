@@ -10,7 +10,7 @@ body {
   height: 1189px;
   background-color: gray;
 
-  --font-family: Candara, sans-serif;
+  --font-family: Inter, sans-serif;
   --rq-color: #d9d2e9;
   --color-key: #486081;
   --slide-background: #f6fdf5;
@@ -32,7 +32,6 @@ body {
 }
 
 #app {
-  clip: auto;
   position: absolute;
   top: 0;
   left: 0;
@@ -53,10 +52,6 @@ body {
   print-color-adjust: exact;
   text-rendering: geometricprecision;
 
-  * {
-    align-content: center;
-    justify-content: center;
-  }
   padding: 0.2cm;
 }
 
@@ -65,13 +60,13 @@ ul {
 }
 
 li::marker, .icon {
-  font-family: "Noto Emoji", sans-serif;
+  font-family: "Noto Emoji", "Inter Tight", "Inter", sans-serif;
   //font-optical-sizing: auto;
   //font-weight: normal;
   //font-style: normal;
 }
 .cicon {
-  font-family: "Noto Color Emoji", sans-serif;
+  font-family: "Noto Color Emoji", "Inter Tight", "Inter", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -106,20 +101,20 @@ header {
 #requirements {
   grid-column: 1 / span 12;
   grid-row: 5 / span 8;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   ul {
     margin: 0;
   }
   li {
-    margin-bottom: 0.1em;
+    margin-bottom: 0.3em;
     margin-left: 1.3em;
   }
   li::marker {
     font-size: 0.8em;
     //color: var(--deep-green)
   }
-
-  //background: gray;
-
 }
 
 #system-img {
@@ -138,11 +133,14 @@ header {
   background: var(--color-prim-light);
   font-weight: bold;
   border-radius: 0.25em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #rdf-representation {
   grid-column: 1 / 15;
-  grid-row: 15 / span 8;
+  grid-row: 15 / span 7;
   color: black;
   font-size: var(--size-extra-small);
 
@@ -159,8 +157,13 @@ header {
   #rdf-explain-1, #rdf-explain-2 {
     border: 0.15rem solid;
     border-radius: 1rem;
-    padding: 0.5rem;
+    padding: 0.2rem;
     text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
   #rdf-explain-1 {
     border-color: var(--deep-green);
@@ -178,9 +181,6 @@ header {
       font-weight: bold;
     };
   }
-
-
-  //background: beige;
 }
 
 #description {
@@ -213,9 +213,8 @@ header {
 }
 
 #advantages {
-  grid-column: 1 / span calc(24/3);
+  grid-column: 1 / span 8;
   grid-row: 24 / span 5;
-
 
   display: flex;
   flex-direction: column;
@@ -244,17 +243,15 @@ header {
 
 #stack-img {
   grid-column: 9 / span 8;
-  grid-row: 23 / -3;
+  grid-row: 22 / -3;
   object-fit: contain;
   width: 100%;
   margin: 0 auto;
   height: calc(100% - 0.1rem);
-
-  //background: #d4e5f5;
 }
 
 #future-work {
-  grid-column: calc(24/3 * 2) / -1;
+  grid-column: 16 / -1;
   grid-row: 23 / -3;
 
   display: flex;

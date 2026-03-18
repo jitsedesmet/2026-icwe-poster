@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+    </style>
     <link rel="icon" type="image/svg+xml" href="/img/logos/favicon.png"/>
     <link rel="icon" type="image/svg+xml" href="/img/logos/favicon.svg"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -45,14 +48,14 @@
    <span style="color: var(--deep-red)">crdt:remove
 "216ac011-...--2025-03-13T14:00:00Z"^^crdt:stamp-uuid .</span></code></pre>
             <div id="rdf-explain-1">
-                <span class="title"><span class="icon">✔</span> <span>:me a :human</span> — present</span><br>
-                Has add-tag not in tombstone set<br>
-                <span class="icon">↳</span> <span style="font-weight: bold">add-wins</span> over concurrent remove
+                <span class="title"><span class="icon">✔</span> <span>:me a :human</span> — present</span>
+                <span>Has add-tag not in tombstone set</span>
+                <span><span class="icon">↳</span> <span style="font-weight: bold">add-wins</span> over concurrent remove</span>
             </div>
             <div id="rdf-explain-2">
-                <span class="title"><span class="icon">❌</span> <span>:me a :man</span> — absent</span><br>
-                No add-tags remain<br>
-                stamp-uuid enables tombstone expiry
+                <span class="title"><span class="icon">❌</span> <span>:me a :man</span> — absent</span>
+                <span>No add-tags remain</span>
+                <span>stamp-uuid enables tombstone expiry</span>
             </div>
         </div>
 
