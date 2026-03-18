@@ -26,9 +26,25 @@ You can deploy your poster to GitHub Pages or any static site hosting service.
 The template is configured to deploy to GitHub Pages.
 Make sure to update the `base` field in `vite.config.js` to match your repository name.
 
-You can manually build and test the production version with:
+You can manually build and test the production web version with:
 
 ```bash
-npm run build
-npm run serve
+npm run build:web
+npm run preview
+```
+
+## File:// Compatible Build
+
+If you need to open the built poster directly with `file://`, use the file build target:
+
+```bash
+npm run build:file
+```
+
+This creates `dist-file/index.html` and inlines the built CSS and JS into that file so browsers do not need to fetch those assets as separate module/stylesheet requests.
+
+To generate a PDF from the file-compatible output:
+
+```bash
+npm run pdf:file
 ```

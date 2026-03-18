@@ -1,6 +1,9 @@
 import { defineConfig } from 'vite'
 
-export default defineConfig({
-    // set base in production
+export default defineConfig(({ mode }) => ({
+    // Keep relative URLs for both hosted and file:// output.
     base: './',
-})
+    build: {
+        outDir: mode === 'file' ? 'dist-file' : 'dist',
+    },
+}))

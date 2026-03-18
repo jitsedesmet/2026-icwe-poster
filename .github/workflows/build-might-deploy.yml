@@ -28,15 +28,18 @@ jobs:
       - name: Install dependencies
         run: npm i
 
-      - name: Build
-        run: npm run build
+      - name: Build web artifact
+        run: npm run build:web
+
+      - name: Build file artifact
+        run: npm run build:file
 
       - name: Generate PDF 📄
         run: |
           google-chrome --headless --no-sandbox --disable-gpu --disable-dev-shm-usage \
             --no-pdf-header-footer \
             --print-to-pdf=dist/poster.pdf \
-            "file://$(pwd)/dist/index.html"
+            "file://$(pwd)/dist-file/index.html"
 
       - name: Setup Pages
         if: ${{ inputs.deploy == true }}
