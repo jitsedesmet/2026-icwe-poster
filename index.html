@@ -14,11 +14,11 @@
 <div id="poster-wrapper">
     <div id="app">
         <header class="mtitle" property="schema:name" style="font-size: 1.7em;">
-            A State-Based <span style="color: var(--color-sec)">Add-Wins CRDT</span> for <span style="color: var(--color-sec)">RDF</span> Datastores
+            A State-Based <span style="color: var(--color-sec)">Add-Wins CRDT</span> for <br> <span style="color: var(--color-sec)">RDF</span> Datastores
         </header>
 
         <div id="requirements">
-            <ul style="list-style: '— ';">
+            <ul style="list-style: '📝 ';">
                 <li>Heterogeneous interfaces supported by minimizing requirements</li>
                 <li>Interact with shared Knowledge Graphs and decentralized data ecosystems through SPARQL</li>
                 <li>Atomicity through self confinement</li>
@@ -50,7 +50,7 @@
             <div id="rdf-explain-1">
                 <span class="title"><span class="icon">✔</span> <span>:me a :human</span> — present</span><br>
                 Has add-tag not in tombstone set<br>
-                ↳ add-wins over concurrent remove
+                <span class="icon">↳</span> add-wins over concurrent remove
             </div>
             <div id="rdf-explain-2">
                 <span class="title"><span class="icon">❌</span> <span>:me a :man</span> — absent</span><br>
@@ -60,10 +60,11 @@
         </div>
 
         <div id="description">
-            <ul style="list-style: '🗎 ';">
+            <div class="title">Notation</div>
+            <ul style="list-style: '+ ';">
                 <li>RDF 1.2 native reification</li>
                 <li>NTP-bound optimize
-                    <ul>
+                    <ul style="list-style: '↳ ';">
                         <li>Drop old & redundant tags</li>
                         <li>Drop old tombstones</li>
                     </ul>
@@ -73,10 +74,11 @@
         </div>
 
         <div id="advantages">
-            <ul style="list-style: '';">
-                <li>Add Wins</li>
+            <div class="title">Architecture</div>
+            <ul style="list-style: '+ ';">
                 <li>RESTful state based interactions</li>
                 <li>ETAG preventing mid flight collision</li>
+
             </ul>
         </div>
 
@@ -87,10 +89,12 @@
         />
 
         <div id="future-work">
-            Conclusion & Future Work
+            <div class="title">Conclusion & <br>Future Work</div>
             <ul style="list-style: '';">
-                <li><span class="icon">🗸️</span> npm PoC implementation: <span style="color: var(--color-sec)">orset-rdf-store</span></li>
-                <li><span class="icon">🗸</span> Abstracted to RDFjs Store interface</li>
+                <li><img src="/img/logos/npm.svg" style="height: 0.6em" /> <span style="color: var(--color-sec)">orset-rdf-store</span></li>
+                <li><span class="icon">🗸</span> Abstracted to
+                    <a href="https://www.npmjs.com/package/@rdfjs/types">RDF/JS Types</a>
+                    <a href="https://github.com/rdfjs/types/blob/c635435724076301e2b451fb25d7458ad82dc322/stream.d.ts#L82">Store</a> interface</li>
                 <li><span class="icon">🔬</span> Need for Constraint Aware Merge</li>
             </ul>
         </div>
@@ -103,7 +107,8 @@
 
             <div style="margin: 0 0 0 auto; display: flex; flex-direction: column; gap: 0.1em; align-items: center;">
                 <div>Paper:</div>
-                <div style="font-size: 0.8em; text-align: center">2026-icwe-poster.<br>jitsedesmet.be</div>
+                <a style="font-size: 0.8em; text-align: center" hrdf="https://2026-icwe-poster.jitsedesmet.be/">
+                    2026-icwe-poster.<br>jitsedesmet.be</a>
             </div>
             <a style="height: 80%; margin: 0 0 0 0.5em; padding: 0;"
                href="https://2026-icwe-poster.jitsedesmet.be/">
