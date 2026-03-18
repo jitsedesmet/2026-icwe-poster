@@ -10,8 +10,9 @@ jobs:
   build-img:
     uses: ./.github/workflows/build-might-deploy.yml
     permissions:
-      packages: read
       contents: read
+      pages: write
+      id-token: write
     with:
       deploy: false
 
