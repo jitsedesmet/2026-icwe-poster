@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&family=Noto+Emoji:wght@300..700&display=swap');
+    </style>
     <link rel="icon" type="image/svg+xml" href="/img/logos/logo-ugent.svg"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>My Awesome Poster</title>
@@ -30,10 +33,11 @@
         />
 
         <div id="main-body">
-            Conflict free RDF replication using Web standards
+            <span class="icon">🌐</span> Conflict Free RDF Replication using Web Standards <span class="icon">🌐</span>
         </div>
 
-        <div id="rdf-representation"><pre><code>&lt;&gt; a crdt:container .
+        <div id="rdf-representation">
+            <pre id="rdf-code"><code>&lt;&gt; a crdt:container .
 [] crdt:tags &lt;&lt;( &lt;&gt; a crdt:container )&gt;&gt; ;
    <span style="color: green">crdt:add "be2f95dd-..."^^crdt:uuid .</span>
 <span style="color: blue">:me a :human .</span>
@@ -43,6 +47,16 @@
 <span style="color: gray">[] crdt:tags &lt;&lt;( :me a :man )&gt;&gt; ;</span>
    <span style="color: red">crdt:remove
 "216ac011-...--2025-03-13T14:00:00Z"^^crdt:stamp-uuid .</span></code></pre>
+            <div id="rdf-explain-1">
+                <span class="title"><span class="icon">✔</span> <span>:me a :human</span> — present</span><br>
+                Has add-tag not in tombstone set<br>
+                ↳ add-wins over concurrent remove
+            </div>
+            <div id="rdf-explain-2">
+                <span class="title"><span class="icon">❌</span> <span>:me a :man</span> — absent</span><br>
+                No add-tags remain<br>
+                stamp-uuid enables tombstone expiry
+            </div>
         </div>
 
         <div id="description">
@@ -75,9 +89,9 @@
         <div id="future-work">
             Conclusion & Future Work
             <ul style="list-style: '';">
-                <li>npm PoC implementation: <span style="color: var(--color-sec)">orset-rdf-store</span></li>
-                <li>Abstracted to RDFjs Store interface</li>
-                <li>Need for Constraint Aware Merge</li>
+                <li><span class="icon">✔</span> npm PoC implementation: <span style="color: var(--color-sec)">orset-rdf-store</span></li>
+                <li><span class="icon">✔</span> Abstracted to RDFjs Store interface</li>
+                <li><span class="icon">🔬</span> Need for Constraint Aware Merge</li>
             </ul>
         </div>
 

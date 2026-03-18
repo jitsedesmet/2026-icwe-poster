@@ -55,8 +55,19 @@ ul {
   padding: 0;
 }
 
-li::marker {
-  font-family: 'Noto Emoji', sans-serif;
+li::marker, .icon {
+  font-family: "Noto Emoji", sans-serif;
+  //font-optical-sizing: auto;
+  //font-weight: normal;
+  //font-style: normal;
+}
+.cicon {
+  font-family: "Noto Color Emoji", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.mono {
+  font-family: "monospace", sans-serif;
 }
 
 a {
@@ -93,7 +104,7 @@ header {
     color: red;
   }
 
-  background: gray;
+  //background: gray;
 
 }
 
@@ -116,16 +127,50 @@ header {
 }
 
 #rdf-representation {
-  grid-column: 1 / 14;
-  grid-row: 15 / span 6;
+  grid-column: 1 / 15;
+  grid-row: 15 / span 7;
   color: black;
-  font-size: var(--size-small);
+  font-size: var(--size-extra-small);
 
-  background: beige;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+
+  #rdf-code {
+    grid-column: 1 / -1;
+    font-size: var(--size-extra-small);
+    margin: 0 0 0 1rem;
+  }
+
+  #rdf-explain-1, #rdf-explain-2 {
+    border: 1px solid;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    text-align: center;
+  }
+  #rdf-explain-1 {
+    border-color: green;
+    background-color: lightgreen;
+    .title {
+      color: green;
+      font-weight: bold;
+    }
+  }
+  #rdf-explain-2 {
+    border-color: red;
+    background-color: lightpink;
+    .title {
+      color: red;
+      font-weight: bold;
+    };
+  }
+
+
+  //background: beige;
 }
 
 #description {
-  grid-column: 14 / -1;
+  grid-column: 15 / -1;
   grid-row: 15 / span 6;
   align-items: center;
   justify-content: center;
@@ -135,7 +180,7 @@ header {
     margin-left: 1.3em;
   }
 
-  background: gray;
+  //background: gray;
 }
 
 #advantages {
@@ -151,12 +196,12 @@ header {
 
 #stack-img {
   grid-column: calc(24/3) / span calc(24/3);
-  grid-row: 22 / -3;
+  grid-row: 23 / -3;
   object-fit: contain;
-
   width: 100%;
   height: calc(100% - 1rem);
-  background: #d4e5f5;
+
+  //background: #d4e5f5;
 }
 
 #future-work {
@@ -165,8 +210,11 @@ header {
   display: flex;
   flex-direction: column;
   justify-items: flex-end;
+  ul {
+    margin: 0.5rem 0 0 0;
+  }
   li, #future-work li::marker {
-    margin-bottom: 0.1em;
+    margin: 0.1rem 0.5rem;
   }
 }
 
