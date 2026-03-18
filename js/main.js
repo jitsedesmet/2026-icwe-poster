@@ -65,4 +65,9 @@ const switchToZoomMode = () => {
 }
 
 window.addEventListener('resize', updateScaleOnResize);
-window.addEventListener('load', updateScale);
+window.addEventListener('load', () => {
+    updateScale();
+    document.fonts?.ready
+        .then(updateScale)
+        .catch(() => {});
+});
