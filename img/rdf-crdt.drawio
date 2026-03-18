@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36" version="29.6.3" pages="2">
   <diagram name="system" id="kdAnOj4OEaWYWBVaZ-iR">
-    <mxGraphModel dx="984" dy="549" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="396" dy="229" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -70,8 +70,8 @@
         <mxCell id="hNUEq7NSnT7WQY_qm2Or-17" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Agent A" vertex="1">
           <mxGeometry height="30" width="120" x="320" y="400" as="geometry" />
         </mxCell>
-        <mxCell id="X7_fVM0AWBQxLgHJJEiA-1" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Edits Offline" vertex="1">
-          <mxGeometry height="30" width="80" x="375" y="341" as="geometry" />
+        <mxCell id="X7_fVM0AWBQxLgHJJEiA-1" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="Edits&lt;div&gt;Offline&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="80" x="393" y="341" as="geometry" />
         </mxCell>
         <mxCell id="X7_fVM0AWBQxLgHJJEiA-3" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Edits Offline" vertex="1">
           <mxGeometry height="30" width="80" x="463" y="341" as="geometry" />

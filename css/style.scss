@@ -113,7 +113,6 @@ header {
   }
   li::marker {
     font-size: 0.8em;
-    //color: var(--deep-green)
   }
 }
 
@@ -139,6 +138,7 @@ header {
 }
 
 #rdf-representation {
+  margin-top: 0.5rem;
   grid-column: 1 / 15;
   grid-row: 15 / span 7;
   color: black;
@@ -184,6 +184,7 @@ header {
 }
 
 #description {
+  margin-top: 0.5rem;
   grid-column: 15 / -1;
   grid-row: 15 / span 8;
 
@@ -246,8 +247,8 @@ header {
   grid-row: 22 / -3;
   object-fit: contain;
   width: 100%;
-  margin: 0 auto;
-  height: calc(100% - 0.1rem);
+  margin: 1.5rem 0 0.1rem 0;
+  height: calc(100% - 1.6rem);
 }
 
 #future-work {
