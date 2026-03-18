@@ -31,6 +31,13 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Generate PDF 📄
+        run: |
+          google-chrome --headless --no-sandbox --disable-gpu --disable-dev-shm-usage \
+            --no-pdf-header-footer \
+            --print-to-pdf=dist/poster.pdf \
+            "file://$(pwd)/dist/index.html"
+
       - name: Setup Pages
         if: ${{ inputs.deploy == true }}
         uses: actions/configure-pages@v5
