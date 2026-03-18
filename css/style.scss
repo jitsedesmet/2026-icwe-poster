@@ -135,7 +135,7 @@ header {
 }
 
 #future-work {
-  grid-column: 1 / span 10;
+  grid-column: 1 / span calc(24/3);
   grid-row: 24 / span 5;
   display: flex;
   flex-direction: column;
@@ -144,6 +144,16 @@ header {
     margin-bottom: 0.1em;
     margin-left: 1.5em;
   }
+}
+
+#stack-img {
+  grid-column: calc(24/3) / span calc(24/3);
+  grid-row: 22 / -3;
+  object-fit: contain;
+
+  width: 100%;
+  height: calc(100% - 1rem);
+  background: #d4e5f5;
 }
 
 footer {
