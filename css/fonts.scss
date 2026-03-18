@@ -1,0 +1,19 @@
+// Noto Emoji – variable font (weights 300–700)
+// Uses the variable font file; Firefox supports TTF variable fonts since v62.
+@font-face {
+  font-family: "Noto Emoji";
+  src: url("./fonts/Noto_Emoji/NotoEmoji-VariableFont_wght.ttf") format("truetype");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+// Noto Color Emoji – single weight (Regular)
+// TTF with embedded CBDT/CBLC color bitmaps; supported in Firefox, Chrome, and Safari.
+@font-face {
+  font-family: "Noto Color Emoji";
+  src: url("./fonts/Noto_Color_Emoji/NotoColorEmoji-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
