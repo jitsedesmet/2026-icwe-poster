@@ -83,6 +83,10 @@ a {
   }
 }
 
+pre, code {
+  font-family: "Ubuntu Mono", sans-serif;
+}
+
 // =====================================================================================================================
 // ======================================= POSTER COMPONENTS ===========================================================
 // =====================================================================================================================
@@ -98,7 +102,7 @@ header {
   color: var(--color-ter);
 }
 
-#requirements {
+#system {
   grid-column: 1 / span 12;
   grid-row: 5 / span 8;
   display: flex;
@@ -128,7 +132,7 @@ header {
   height: 100%;
 }
 
-#main-body {
+#take-home {
   grid-column: 1 / -1;
   grid-row: 13 / span 2;
   text-align: center;
@@ -154,7 +158,7 @@ header {
 
   #rdf-code {
     grid-column: 1 / -1;
-    font-size: var(--size-extra-small);
+    font-size: var(--size-small);
     margin: 0 0 0 1rem;
   }
 
@@ -187,7 +191,7 @@ header {
   }
 }
 
-#description {
+#notation {
   margin-top: 0.5rem;
   grid-column: 15 / -1;
   grid-row: 15 / span 8;
@@ -228,7 +232,7 @@ header {
   }
 }
 
-#advantages {
+#architecture {
   grid-column: 1 / span 8;
   grid-row: 24 / span 5;
 
@@ -266,7 +270,7 @@ header {
   height: calc(100% - 1.6rem);
 }
 
-#future-work {
+#conclusion {
   grid-column: 16 / -1;
   grid-row: 23 / -3;
 
@@ -283,7 +287,7 @@ header {
   ul {
     margin: 0;
   }
-  li, #future-work li::marker {
+  li, #conclusion li::marker {
     margin: 0.2em 1rem;
   }
 }
