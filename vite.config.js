@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
+import { viteSingleFile } from "vite-plugin-singlefile";
 
 export default defineConfig(() => ({
-    // Keep relative URLs for both hosted and file:// output.
+    plugins: [ viteSingleFile() ],
     base: './',
 }))

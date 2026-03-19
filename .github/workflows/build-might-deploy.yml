@@ -29,10 +29,10 @@ jobs:
         run: npm i
 
       - name: Build artifact
-        run: npm run build:file
+        run: npm run build
 
       - name: Generate PDF 📄
-        run: npm run pdf:file
+        run: npm run build-pdf
 
       - name: Setup Pages
         if: ${{ inputs.deploy == true }}
