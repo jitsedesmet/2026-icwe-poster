@@ -41,7 +41,7 @@ If you need to open the built poster directly with `file://`, use the file build
 npm run build:file
 ```
 
-This creates `dist-file/index.html` and inlines the built CSS and JS into that file so browsers do not need to fetch those assets as separate module/stylesheet requests.
+This creates `dist/index.html` and inlines the built CSS and JS into that file so browsers do not need to fetch those assets as separate module/stylesheet requests.
 
 To generate a PDF from the file-compatible output:
 

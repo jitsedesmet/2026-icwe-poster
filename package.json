@@ -7,13 +7,11 @@
     "dev": "vite",
     "build": "npm run build:web",
     "build:web": "vite build --mode web",
-    "build:file": "vite build --mode file && node ./scripts/inline-dist-assets.mjs ./dist-file/index.html",
+    "build:file": "vite build --mode file && node ./scripts/inline-dist-assets.mjs ./dist/index.html",
     "preview": "vite preview",
-    "pdf:file": "google-chrome --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --no-pdf-header-footer --print-to-pdf=dist-file/poster.pdf file://$(pwd)/dist-file/index.html"
+    "pdf:file": "google-chrome --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --no-pdf-header-footer --print-to-pdf=dist/poster.pdf file://$(pwd)/dist/index.html"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.27",
-    "postcss": "^8.5.8",
     "sass-embedded": "^1.93.2",
     "vite": "^7.1.7"
   },
