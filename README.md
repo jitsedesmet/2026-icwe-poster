@@ -1,5 +1,8 @@
 # WebPoster
 
+
+TO download Google fonts locally: https://gwfh.mranftl.com/fonts
+
 Kick-start the creation of your RDFa-annotated Web poster in HTML.
 
 ## Getting Started

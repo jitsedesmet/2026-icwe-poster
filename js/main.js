@@ -1,6 +1,4 @@
 import '../css/style.scss'
-import '@fortawesome/fontawesome-free/css/all.min.css';
-import '@fortawesome/fontawesome-free/js/all.min.js';
 
 let devicePixelRatio = window.devicePixelRatio || 1;
 let zoomMode = false;

@@ -59,7 +59,7 @@ ul {
   padding: 0;
 }
 
-li::marker, .icon {
+li::before, .icon {
   font-family: "Noto Emoji", "Inter Tight", "Inter", sans-serif;
   //font-optical-sizing: auto;
   //font-weight: normal;
@@ -106,13 +106,17 @@ header {
   justify-content: center;
   ul {
     margin: 0;
+    list-style: none;
   }
   li {
-    margin-bottom: 0.3em;
-    margin-left: 1.3em;
+    margin: 0 0 0.3em 0;
+    display: flex;
+    align-items: baseline;
   }
-  li::marker {
+  li::before {
+    content: "📝";
     font-size: 0.8em;
+    margin: 0 0.5em 0 1rem;
   }
 }
 
@@ -196,19 +200,30 @@ header {
     font-weight: bold;
     margin: 0;
   }
-  > ul {
+  ul {
     margin: 0;
+    list-style: none;
   }
-  ul li::marker {
+  li::before {
+    content: '+';
     font-weight: bold;
     color: var(--deep-green);
+    margin: 0 0.5em 0 0;
+  }
+  li:has(> ul) {
+    flex-wrap: wrap;
   }
   li {
-    //margin-bottom: 0.5em;
-    margin-left: 1.3em;
+    margin: 0 0 0.3em 0;
+    display: flex;
+    align-items: baseline;
+    // Subitems:
     ul li {
       margin-bottom: 0;
       margin-left: 0.7em
+    }
+    ul li::before {
+      content: '↳';
     }
   }
 }
@@ -225,20 +240,20 @@ header {
     font-weight: bold;
     margin: 0;
   }
-  > ul {
+  ul {
     margin: 0;
-  }
-  ul li::marker {
-    font-weight: bold;
-    color: var(--deep-green);
+    list-style: none;
   }
   li {
-    //margin-bottom: 0.5em;
-    margin-left: 1.3em;
-    ul li {
-      margin-bottom: 0;
-      margin-left: 0.7em
-    }
+    margin: 0 0 0.3em 0;
+    display: flex;
+    align-items: baseline;
+  }
+  li::before {
+    content: '+';
+    font-weight: bold;
+    color: var(--deep-green);
+    margin: 0 0.5em 0 0.2rem;
   }
 }
 
