@@ -26,11 +26,12 @@
             </ul>
         </div>
 
-        <img id="system-img" src="/img/rdf-crdt-system.svg"
-             alt="Two agents communicating with two datastores.
-             The first datastore is exposed through an LDP interface while the second is exposed through a TPF interface.
-             The first agents communicates with both datastores while the second agent communicates only with the second datastore."
-        />
+        <object id="system-img" data="/img/rdf-crdt-system.svg" type="image/svg+xml" role="img"
+            aria-label="Two agents communicating with two datastores.
+                The first datastore is exposed through an LDP interface while the second is exposed through a TPF interface.
+                The first agents communicates with both datastores while the second agent communicates only with the second datastore."
+        >
+        </object>
 
         <div id="main-body">
             Conflict Free RDF Replication using Web Standards
@@ -82,11 +83,14 @@
             </ul>
         </div>
 
-        <img id="stack-img" src="/img/rdf-crdt-stack.svg"
-             alt="Two agents communicating with two datastores.
-             The first datastore is exposed through an LDP interface while the second is exposed through a TPF interface.
-             The first agents communicates with both datastores while the second agent communicates only with the second datastore."
-        />
+        <object id="stack-img" role="img" data="/img/rdf-crdt-stack.svg" type="image/svg+xml"
+             aria-label="Architectural stack of the approach.
+             An agent (application/ user) communicates with a SPARQL engine using SPARQL.
+             In turn, the engine, which just supports standard SPARQL queries and updates, communicates with its internal datastore.
+             The store, being a CRDT store, has an OR-set implementation in RDF1.2, and communicates with the Web.
+             This communication is based on GET requests responding with ETags, and performing PUT requests using the If-Match header.">
+
+        </object>
 
         <div id="future-work">
             <div class="title">Conclusion & <br>Future Work</div>

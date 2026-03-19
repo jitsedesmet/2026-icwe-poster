@@ -315,3 +315,28 @@ footer {
   size: 841px 1189px; /* A0 dimensions in millimeters */
   margin: 0;
 }
+
+
+#pdf-download {
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
+  background: #45678e;
+  border-radius: 50%;
+  width: 3em;
+  height: 3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: none;
+
+  &:hover {
+    background: #0b99bc;
+  }
+
+  svg {
+    width: 1.5em;
+    height: 1.5em;
+    fill: white;
+  }
+}
