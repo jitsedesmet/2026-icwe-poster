@@ -12,26 +12,28 @@
 <div id="poster-wrapper">
     <div id="app">
         <header class="mtitle" property="schema:name" style="font-size: 1.7em;">
-            A State-Based <span style="color: var(--color-sec)">Add-Wins CRDT</span> for <br> <span style="color: var(--color-sec)">RDF 1.2</span> Datastores
+            A State-Based <span style="color: var(--color-sec)">Add-Wins CRDT</span> for <br> <span
+                style="color: var(--color-sec)">RDF 1.2</span> Datastores
         </header>
 
-        <div id="system">
+        <div id="requirements">
+            <div class="title">Requirements</div>
             <ul>
-                <li>Heterogeneous interfaces supported by minimizing requirements</li>
                 <li>Interact with shared Knowledge Graphs and decentralized data ecosystems through SPARQL</li>
-                <li>Serving CRDT aware and non-aware clients</li>
+                <li>Serving CRDT-aware and non-aware clients</li>
+                <li>Heterogeneous interfaces supported by minimizing requirements</li>
             </ul>
         </div>
 
         <object id="system-img" data="/img/rdf-crdt-system.svg" type="image/svg+xml" role="img"
-            aria-label="Two agents communicating with two datastores.
+                aria-label="Two agents communicating with two datastores.
                 The first datastore is exposed through an LDP interface while the second is exposed through a TPF interface.
                 The first agents communicates with both datastores while the second agent communicates only with the second datastore."
         >
         </object>
 
         <div id="take-home">
-            Conflict Free RDF Replication using Web Standards
+            Offline-First Collaborative RDF Editing using Web standards
         </div>
 
         <div id="rdf-representation">
@@ -81,7 +83,7 @@
         </div>
 
         <object id="stack-img" role="img" data="/img/rdf-crdt-stack.svg" type="image/svg+xml"
-             aria-label="Architectural stack of the approach.
+                aria-label="Architectural stack of the approach.
              An agent (application/ user) communicates with a SPARQL engine using SPARQL.
              In turn, the engine, which just supports standard SPARQL queries and updates, communicates with its internal datastore.
              The store, being a CRDT store, has an OR-set implementation in RDF1.2, and communicates with the Web.
@@ -92,11 +94,17 @@
         <div id="conclusion">
             <div class="title">Conclusion & <br>Future Work</div>
             <ul style="list-style: '';">
-                <li><img src="/img/logos/npm.svg" style="height: 0.6em" /> <span style="color: var(--color-sec)">orset-rdf-store</span></li>
+                <li><img src="/img/logos/npm.svg" style="height: 0.6em"/>
+                    <a style="color: var(--color-sec)" href="https://www.npmjs.com/package/orset-rdf-store">
+                        orset-rdf-store
+                    </a></li>
                 <li><span class="icon" style="font-size: 0.8em; font-weight: 300">✔</span> Abstracted to
                     <a href="https://www.npmjs.com/package/@rdfjs/types">RDF/JS Types</a>
-                    <a href="https://github.com/rdfjs/types/blob/c635435724076301e2b451fb25d7458ad82dc322/stream.d.ts#L82">Store</a> interface</li>
-                <li><span class="icon">🔬</span> Need for Constraint Aware Merge</li>
+                    <a href="https://github.com/rdfjs/types/blob/c635435724076301e2b451fb25d7458ad82dc322/stream.d.ts#L82">Store</a>
+                    interface
+                </li>
+                <li>Try yourself in <img id="comunica" alt="Comunica" src="img/logos/comunica-word.svg"></li>
+                <li><span class="icon">🔬</span> Need for Constraint-Aware Merge</li>
             </ul>
         </div>
 

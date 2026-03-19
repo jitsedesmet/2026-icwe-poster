@@ -102,7 +102,11 @@ header {
   color: var(--color-ter);
 }
 
-#system {
+#requirements {
+  .title {
+    font-weight: bold;
+    margin: 0;
+  }
   grid-column: 1 / span 12;
   grid-row: 5 / span 8;
   display: flex;
@@ -289,6 +293,9 @@ header {
   }
   li, #conclusion li::marker {
     margin: 0.2em 1rem;
+  }
+  #comunica {
+    height: 0.8em;
   }
 }
 
