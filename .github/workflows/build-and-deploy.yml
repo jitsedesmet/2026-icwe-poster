@@ -10,12 +10,14 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  packages: write
+
 jobs:
   build-and-deploy:
     uses: ./.github/workflows/build-might-deploy.yml
     with:
       deploy: true
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
