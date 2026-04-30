@@ -12,7 +12,8 @@
 <div id="poster-wrapper">
     <div id="app">
         <header class="mtitle" property="schema:name" style="font-size: 1.7em;">
-            A State-Based <span style="color: var(--color-sec)">Add-Wins CRDT</span> for <br> <span
+            A State-Based <span style="color: var(--color-sec)">Add-Wins CRDT</span><br>
+            for <span
                 style="color: var(--color-sec)">RDF 1.2</span> Datastores
         </header>
 
@@ -63,13 +64,13 @@
             <div class="title">Notation</div>
             <ul>
                 <li>RDF 1.2 native reification</li>
+                <li>NTP max pairwise 2000s drift</li>
                 <li>NTP-bound optimize
                     <ul>
                         <li>Drop old & redundant tags</li>
                         <li>Drop old tombstones</li>
                     </ul>
                 </li>
-                <li>NTP max pairwise 2000s drift</li>
             </ul>
         </div>
 
@@ -114,19 +115,27 @@
                 <a href="mailto:Ruben.Taelman@ugent.be">Ruben.Taelman@ugent.be</a>
             </div>
 
-            <div style="margin: 0 0 0 auto; display: flex; flex-direction: column; gap: 0.1em; align-items: center;">
-                <div>Paper:</div>
-                <a style="font-size: 0.8em; text-align: center" href="https://2026-icwe-poster.jitsedesmet.be/">
-                    2026-icwe-poster.<br>jitsedesmet.be</a>
-            </div>
-            <a style="height: 80%; margin: 0 0 0 0.5em; padding: 0;"
-               href="https://2026-icwe-poster.jitsedesmet.be/">
-                <img style="margin: 0" height="100%" src="img/qr-paper.svg">
+            <a id="paper-ref" href="https://2026-icwe-poster.jitsedesmet.be/">
+                <div style="display: flex; flex-direction: column; gap: 0.1em;
+                            align-items: flex-end;">
+                    <div style="font-weight: bold">Paper</div>
+                    <span style="font-size: 0.8em; text-align: right">
+                        2026-icwe-poster<br>
+                        .jitsedesmet.be
+                    </span>
+                </div>
+                <img id="qr-paper" src="img/qr-paper.svg">
             </a>
 
-            <img alt="logo fwo" class="logo" style="margin: 0 0 0 auto" height="30%" src="img/logos/logo-fwo-white.svg">
-            <img alt="logo ugent" class="logo" height="75%" src="img/logos/logo-ugent-white.svg">
-            <img alt="logo imec" style="margin: 0" class="logo" height="50%" src="img/logos/logo-imec-white.svg">
+            <a id="fwo" class="logo" href="https://www.fwo.be/en/">
+                <img alt="logo fwo" src="img/logos/logo-fwo-white.svg">
+            </a>
+            <a id="ughent" class="logo" href="https://www.ugent.be/en">
+                <img alt="logo Ghent University" height="100%" src="img/logos/logo-ugent-white.svg">
+            </a>
+            <a id="imec" class="logo" href="https://www.imec-int.com/en">
+                <img alt="logo imec" src="img/logos/logo-imec-white.svg">
+            </a>
         </footer>
     </div>
 </div>

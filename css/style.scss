@@ -246,14 +246,14 @@ header {
 
   .title {
     font-weight: bold;
-    margin: 0;
+    margin: 0 0 0.5em 0;
   }
   ul {
     margin: 0;
     list-style: none;
   }
   li {
-    margin: 0 0 0.3em 0;
+    margin: 0 0 0.5em 0;
     display: flex;
     align-items: baseline;
   }
@@ -294,6 +294,9 @@ header {
   li, #conclusion li::marker {
     margin: 0.2em 1rem;
   }
+  li {
+    margin-bottom: 0.5em;
+  }
   #comunica {
     height: 0.8em;
   }
@@ -308,6 +311,20 @@ footer {
   padding: 0 1em;
   display: flex;
   align-items: center;
+  #paper-ref {
+    margin: 0 0 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 80%;
+
+    #qr-paper {
+      height: 100%;
+      width: auto;
+      margin: 0 0 0 0.5em;
+      padding: 0;
+    }
+  }
   a {
     color: var(--color-ter);
     text-decoration: none;
@@ -315,6 +332,24 @@ footer {
   }
   .logo {
     margin: 0 1em 0 1em;
+  }
+  #fwo {
+    margin: 0 0 0 auto;
+    height: 30%;
+  }
+  #ughent {
+    margin-right: 0;
+    height: 75%;
+  }
+  #imec {
+    margin: 0;
+    height: 50%;
+  }
+  #fwo, #ughent, #imec {
+    img {
+      height: 100%;
+      width: auto;
+    }
   }
 }
 
